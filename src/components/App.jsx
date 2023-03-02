@@ -1,12 +1,26 @@
 import { useState } from 'react';
 import '../styles/App.css';
 
+// React Router
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './Navbar';
+import Home from './Home';
+
+
 function App() {
     const [count, setCount] = useState(0);
 
     return (
         <div className="App">
-            Hello world!
+            <Navbar />
+
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="*" element={<Navigate to="/" />} />
+
+            </Routes>
+
         </div>
     );
 }
