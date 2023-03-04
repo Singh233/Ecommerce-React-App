@@ -4,8 +4,8 @@ import '../styles/App.css';
 // React Router
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
-import Home from './Home';
-
+import Home from '../pages/Home';
+import Products from '../pages/Products';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -14,13 +14,11 @@ function App() {
         <div className="App">
             <Navbar />
 
-
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="*" element={<Navigate to="/" />} />
-
             </Routes>
-
         </div>
     );
 }
