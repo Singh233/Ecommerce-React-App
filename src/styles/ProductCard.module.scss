@@ -1,0 +1,213 @@
+// define colors in variables
+$primary-color: #212224;
+$secondary-color: #8C8C88;
+$tertiary-color: #c1c1c183;
+$colorRed: #D20A0A;
+$colorRasp: #DF1278;
+$colorIndigo: #F28627;
+$colorBlue: #F2DA63;
+$colorGray: rgba(51, 52, 54, 0.682);
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #212224;
+    margin: 10px;
+
+    height: 490px;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+
+
+    .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .bgDesign {
+            position: absolute;
+            margin-top: 30px;
+            z-index: 1;
+            height: 170px;
+            width: 250px;
+            background-color: rgba(140, 137, 131, 0.176);
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+            background-color: #0D0D0D;                    
+        
+        }
+
+        img {
+            position: relative;
+            z-index: 2;
+            height: 240px;
+            margin-top: -30px;
+        }
+        
+
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .heading {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            justify-content: space-between;
+
+            .category {
+                display: flex;
+                align-items: center;
+                color: white;
+                
+                img {
+                    height: 20px;
+                    margin-right: 5px;
+                }
+            }
+
+            .rating {
+                display: flex;
+                align-items: center;
+
+                img {
+                    height: 20px;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        
+
+        .name {
+            text-align: center;
+            font-size: 1.6rem;
+            margin: 5px ;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            margin: 5px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        position: relative;
+        
+        
+
+        .addToCart {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 1px solid $colorBlue;
+            background-color: transparent;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            font-size: 1rem;
+            background-color: $colorBlue;
+            color: white;
+
+            svg {
+                font-size: 1.3rem;
+                margin-right: 7px;
+            }
+
+            
+        }
+
+        .manage {
+            display: flex;
+            align-items: center;
+
+            button {
+                padding: 10px;
+                font-size: 1.3rem;
+                border-radius: 10px;
+                border: none;
+                background-color: transparent;
+
+                padding: 10px 15px;
+                background-color: transparent;
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+                margin: 5px;
+
+            }
+
+            .editButton {
+                border: 1px solid $colorIndigo;
+                background-color: $colorIndigo;
+                color: white;
+
+                // &:hover {
+                //     background-color: transparent;
+                //     color: $colorIndigo;
+                // }
+            }
+
+            .deleteButton {
+                border: 1px solid $colorRasp;
+                background-color: $colorRasp;
+                color: white;
+
+                &:hover {
+                    background-color: transparent;
+                    color: $colorRasp;
+                }
+            }
+        }
+    }
+
+    .descriptionOverlay {
+        position: absolute;
+        background-color: #212224;
+        border-radius: 20px;
+        height: 150px !important;
+        width: 350px;
+        margin-top: 240px;
+        
+        
+
+        .description {
+            padding: 10px;
+            text-align: justify;
+        }
+    }
+
+    .seeDetailsButton {
+        background-color: black;
+        width: 106%;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        margin-bottom: -20px;
+        border-radius: 0 0 20px 20px;
+        font-size: 1.1rem;
+        cursor: pointer;
+
+    }
+
+    .hide {
+        display: none !important;
+    }
+}

@@ -20,8 +20,8 @@ export default function Navbar() {
 
             <div className={styles.navLinks}>
                 <Link to="/">Home</Link>
-                <Link to="/about">Products</Link>
-                <Link to="/contact">Add Product</Link>
+                <Link to="/products">Products</Link>
+                <Link to="/add-product">Add Product</Link>
             </div>
 
             <div className={styles.navIcons}>
