@@ -1,0 +1,54 @@
+
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: space-between;
+    font-size: 1.1rem;
+
+    .currentFilter {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+
+        span {
+            align-self: flex-start;
+            height: 6px;
+            width: 6px;
+            background-color: red;
+            border-radius: 50%;
+            margin-left: 5px;
+
+        }
+    }
+
+    .options {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 10%;
+        cursor: pointer;
+
+        img {
+            height: 20px;
+            padding: 10px 12px;
+            background-color: #212224;
+            border-radius: 10px;
+
+        }
+
+        p {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #212224;
+            border-radius: 10px;
+            
+            svg {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
