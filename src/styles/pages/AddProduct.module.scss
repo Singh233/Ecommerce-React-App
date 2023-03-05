@@ -81,7 +81,8 @@
                 border-radius: 50%;
                 position: relative;
                 z-index: 1;
-                transition: all 2s ease-in-out;
+                transition-delay: 0.4s !important;
+                transition: all 0.3s ease-in-out;
                 
 
             }
@@ -114,7 +115,8 @@
                 width: 15px;
                 background-color: rgb(86, 86, 86);
                 border-radius: 50%;
-                transition: all 2s ease-in-out;
+                transition-delay: 0.4s !important;
+                transition: all 0.3s ease-in-out;
 
             }
         }

@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { postProduct } from '../api'
 
 export default function AddProduct() {
     const [step, setStep] = useState(1);
@@ -41,10 +42,12 @@ export default function AddProduct() {
         }
     }
 
-    const handleSubmitClick = () => {
+    const handleSubmitClick = async () => {
         if (productDetails.category === '' || productDetails.rating === '') {
             alert('Please fill all the fields');
         } else {
+            const response = await postProduct(productDetails)
+            console.log(response);
             alert('Product added successfully');
             // reset the form
             setStep(1);
