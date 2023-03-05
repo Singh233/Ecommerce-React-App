@@ -58,6 +58,25 @@ export default function AddProduct() {
         }
     }
 
+    const setProgress1 = {
+        width: step === 1 ? '0%' : '100%'
+        
+    }
+
+    const setProgress2 = {
+        width: step === 2 || step === 1 ? '0%' : '100%'
+    }
+
+    const setShadow2 = {
+        boxShadow: step === 2 || step === 3 ? 'rgba(0, 0, 0, 0.25) 0px 54px 55px, #e5b2ca 0px -12px 30px, rgba(119, 88, 255, 0.12) 0px 4px 6px, rgba(119, 88, 255, 0.12) 0px 12px 13px, rgba(119, 88, 255, 0.12) 0px -3px 5px' : 'none',
+        backgroundColor: step === 2 || step === 3 ? '#e5b2ca' : 'rgb(86, 86, 86)'
+    }
+
+    const setShadow3 = {
+        boxShadow: step === 3 ? 'rgba(0, 0, 0, 0.25) 0px 54px 55px, #e5b2ca 0px -12px 30px, rgba(119, 88, 255, 0.12) 0px 4px 6px, rgba(119, 88, 255, 0.12) 0px 12px 13px, rgba(119, 88, 255, 0.12) 0px -3px 5px' : 'none',
+        backgroundColor: step === 3 ? '#e5b2ca' : 'rgb(86, 86, 86)'
+    }
+
 
 
     return (
@@ -77,21 +96,21 @@ export default function AddProduct() {
                 <div className={styles.step1}>
                     <div className={styles.dot1}></div>
                     <div className={styles.progress1}>
-                        <div className={styles.progressFill1}></div>
+                        <div style={setProgress1} className={styles.progressFill1}></div>
                     </div>
                     
                 </div>
 
                 <div className={styles.step2}>
-                    <div className={styles.dot2}></div>
+                    <div style={setShadow2} className={styles.dot2}></div>
                     <div className={styles.progress2}>
-                        <div className={styles.progressFill2}></div>
+                        <div style={setProgress2} className={styles.progressFill2}></div>
                     </div>
 
                 </div>
 
                 <div className={styles.step3}>
-                    <div className={styles.dot3}></div>
+                    <div style={setShadow3} className={styles.dot3}></div>
                 </div>
 
             </div>
