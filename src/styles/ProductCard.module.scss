@@ -39,6 +39,17 @@ $colorGray: rgba(51, 52, 54, 0.682);
         height: inherit;
         width: inherit;
 
+        .menu {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+
+            svg {
+                font-size: 1.2rem;
+            }
+        }
+
         .image {
             display: flex;
             align-items: center;
@@ -83,7 +94,9 @@ $colorGray: rgba(51, 52, 54, 0.682);
                     display: flex;
                     align-items: center;
                     color: white;
-                    
+                    // box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+                    // padding: 10px;
+                    // border-radius: 10px;
                     img {
                         height: 20px;
                         margin-right: 5px;
@@ -121,7 +134,7 @@ $colorGray: rgba(51, 52, 54, 0.682);
         .actions {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             width: 95%;
             position: relative;
             
@@ -174,8 +187,8 @@ $colorGray: rgba(51, 52, 54, 0.682);
                 }
     
                 .editButton {
-                    border: 1px solid $colorIndigo;
-                    background-color: $colorIndigo;
+                    // border: 1px solid $colorIndigo;
+                    // background-color: $colorIndigo;
                     color: white;
     
                     // &:hover {
@@ -185,8 +198,8 @@ $colorGray: rgba(51, 52, 54, 0.682);
                 }
     
                 .deleteButton {
-                    border: 1px solid $colorRed;
-                    background-color: $colorRed;
+                    // border: 1px solid $colorRed;
+                    // background-color: $colorRed;
                     color: white;
     
                     &:hover {
