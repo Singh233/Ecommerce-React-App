@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getProducts } from '../api';
+import Filter from '../components/Filter';
 import ProductCard from '../components/ProductCard'
 import Search from '../components/Search';
 import styles from '../styles/pages/Products.module.scss';
@@ -26,6 +27,7 @@ export default function Products() {
     return (
         <div className={styles.container}>
             <Search />
+            <Filter />
 
             <div className={styles.productsList}>
                 {
