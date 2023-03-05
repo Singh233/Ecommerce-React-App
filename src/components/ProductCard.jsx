@@ -6,6 +6,7 @@ import styles from '../styles/ProductCard.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
@@ -51,9 +52,9 @@ export default function ProductCard(props) {
     }
 
     const editButtonStyling = {
-        backgroundColor: editHover ? 'transparent' : product.colorPalette.secondary,
-        border: `1px solid ${product.colorPalette.secondary}`,
-        color: editHover ? product.colorPalette.secondary : 'white'
+        // backgroundColor: editHover ? 'transparent' : product.colorPalette.secondary,
+        // border: `1px solid ${product.colorPalette.secondary}`,
+        // color: editHover ? product.colorPalette.secondary : 'white'
     }
 
     const seeDetailsStyling = {
@@ -77,6 +78,10 @@ export default function ProductCard(props) {
     return (
         <div style={cardBackground} className={styles.container}>
             <div className={styles.overlay}>
+                <div className={styles.menu}>
+                    <FontAwesomeIcon icon={faEllipsisV} />
+                </div>
+
                 <div className={styles.image}>
                     <div className={styles.bgDesign}> </div>
                     <img src={product.image} alt="" />
@@ -101,7 +106,7 @@ export default function ProductCard(props) {
                         <FontAwesomeIcon icon={faBagShopping} /> Add to Bag
                     </button>
 
-                    <div className={styles.manage}>
+                    {/* <div className={styles.manage}>
                         <button style={ editButtonStyling } className={styles.editButton}
                             onMouseEnter={() => setEditHover(!editHover)}
                             onMouseLeave={() => setEditHover(!editHover)}
@@ -110,7 +115,7 @@ export default function ProductCard(props) {
                             <FontAwesomeIcon icon={faPenToSquare} /> 
                         </button>
                         <button className={styles.deleteButton}> <FontAwesomeIcon icon={faTrash} /> </button>
-                    </div>
+                    </div> */}
 
                 </div>
 
