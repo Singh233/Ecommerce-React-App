@@ -17,6 +17,9 @@ import categoryIcon from '../../assets/icons/category.svg'
 import starIcon from '../../assets/icons/star.svg'
 import sortIcon from '../../assets/icons/sorting.svg'
 
+// Toast
+import toast from 'react-hot-toast';
+
 export default function StepTwo(props) {
 
     // product state
@@ -27,6 +30,8 @@ export default function StepTwo(props) {
     const handleValidation = (e) => {
         if (e.target.value === '') {
             e.target.className = styles.error;
+            toast.error('Description cannot be empty!');
+
         } else {
             e.target.className = styles.success;
 

@@ -218,6 +218,34 @@
 
 }
 
+.next {
+    display: flex;
+    align-items: center;
+    background-color: #005bea;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    margin: 10px;
+    border: 1px solid #005bea;
+
+
+    &:hover {
+        background-color: #ffffff;
+        color: #005bea;
+        border: 1px solid #005bea;
+    }
+
+    svg {
+        margin-left: 5px;
+    }
+}
+
 // responsive design
 @media screen and (max-width: 1250px) {
     
