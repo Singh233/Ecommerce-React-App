@@ -4,7 +4,8 @@ import Filter from '../components/Filter';
 import ProductCard from '../components/ProductCard'
 import Search from '../components/Search';
 import styles from '../styles/pages/Products.module.scss';
-
+// Toast
+import toast from 'react-hot-toast';
 
 export default function Products() {
 
@@ -13,14 +14,21 @@ export default function Products() {
 
     useEffect(() => {
 
-        // fetch products from the api
-        const fetchProducts = async () => {
-            const response = await getProducts();
-            console.log(response);
-            setProducts(response);
-        }
-        fetchProducts();
         
+        return () => {
+            // fetch products from the api
+            const fetchProducts = async () => {
+                const response = await toast.promise(getProducts(), {
+                    loading: 'Updating Products...',
+                    success: 'Products updated successfully',
+                    error: 'Please try again later!',
+                });
+                console.log(response);
+                setProducts(response);
+            }
+            fetchProducts();
+        }
+
 
     }, [])
 
