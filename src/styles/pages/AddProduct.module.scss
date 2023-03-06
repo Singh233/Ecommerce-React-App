@@ -34,6 +34,8 @@
         margin: 10px;
         margin-bottom: 20px;
 
+
+
         .step1, .step2, .step3 {
             display: flex;
             flex-direction: column;
@@ -123,11 +125,19 @@
 
     }
 
+    .steps {
+        position: relative;
+        width: 100%;
+    }
+
     .buttons {
         display: flex;
         align-items: center;
-        
         margin: 10px;
+
+        position: absolute;
+        bottom: 15%;
+    
 
         svg {
             font-size: 1.2rem;

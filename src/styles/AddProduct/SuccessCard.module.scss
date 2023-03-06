@@ -1,0 +1,63 @@
+// define colors in variables
+$primary-color: #212224;
+$secondary-color: #8c8c88;
+$tertiary-color: #c1c1c183;
+$colorRed: #d20a0ad9;
+$colorRasp: #df1278;
+$colorIndigo: #f28627;
+$colorBlue: #f2da63;
+$colorGray: rgba(51, 52, 54, 0.682);
+
+// card container
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    background-color: #000000;
+    margin: 20px;
+
+    margin-left: 20px;
+
+    height: 40vh;
+    width: 40vw;
+    box-shadow: rgba(0, 0, 0, 0.36) 0px 22px 70px 4px;
+
+    position: absolute;
+    left: 37%;
+
+    
+
+    .main {
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        background-color: #21d4fd;
+
+        background-image: linear-gradient(to top, #005bea 0%, #00c6fb 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 5px;
+
+            svg {
+                font-size: 3rem;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    
+}
+
+.hide {
+    display: none !important;
+}
+

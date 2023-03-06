@@ -24,6 +24,9 @@ export default function StepThree(props) {
     // product state
     const { productDetails, setProductDetails } = props.stateAsProp;
 
+        // get back click state
+        const { backClick, setBackClick } = props.backClickState;
+
     // input form validation
     const handleValidation = (e) => {
         if (e.target.value === '') {
@@ -53,7 +56,11 @@ export default function StepThree(props) {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={`animate__animated 
+            ${props.currentStep !== 3 ? styles.hide : ''} 
+            ${styles.container} 
+            ${backClick && props.currentStep === 3 ? 'animate__bounceOutRight' : 'animate__bounceInRight'}
+            `}>
             <div className={styles.left}>
                 <p>Step Three</p>
             </div>
