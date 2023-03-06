@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Home from '../pages/Home';
 import Products from '../pages/Products';
 import AddProduct from '../pages/AddProduct';
+import Cart from '../pages/Cart';
 
 
 
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/add-product" element={<AddProduct />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </div>
