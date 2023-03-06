@@ -16,10 +16,15 @@ $colorGray: rgba(51, 52, 54, 0.682);
     border-radius: 20px;
     background-color: #000000;
     margin: 20px;
+    // margin-top: 40px;
+    margin-left: 70px;
 
     height: 40vh;
     width: 40vw;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-shadow: rgba(0, 0, 0, 0.36) 0px 22px 70px 4px;
+
+    position: absolute;
+    left: 23%;
 
 
     .left,
@@ -83,6 +88,27 @@ $colorGray: rgba(51, 52, 54, 0.682);
         .success {
             border: 2px solid greenyellow;
         }
+
+    }
+}
+
+
+
+.hide {
+    display: none !important;
+}
+
+.animate {
+    animation: slideInFromRight 0.7s ease-out;
+}
+
+// animate from right
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-55%);
 
     }
 }

@@ -14,8 +14,23 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { postProduct } from '../api';
 import toast from 'react-hot-toast';
 
+import 'animate.css';
+import SuccessCard from '../components/AddProduct/SuccessCard';
+
 export default function AddProduct() {
     const [step, setStep] = useState(1);
+
+    // state for next button click
+    const [nextClick, setNextClick] = useState(false);
+
+    // state for back button click
+    const [backClick, setBackClick] = useState(false);
+
+    // state for submit button click
+    const [submitClick, setSubmitClick] = useState(false);
+
+    // state for success card
+    const [showSuccessCard, setShowSuccessCard] = useState(false);
 
     // collect data from step one
     const [productDetails, setProductDetails] = useState({
@@ -31,6 +46,8 @@ export default function AddProduct() {
             if (productDetails.name === '' || productDetails.price === '') {
                 toast.error('Please fill all the fields');
             } else {
+                setNextClick(true);
+                setBackClick(false);
                 setStep(step + 1);
             }
         } else if (step === 2) {
@@ -42,18 +59,49 @@ export default function AddProduct() {
         }
     };
 
+    const handleBackClick = () => {
+        setBackClick(true);
+        setNextClick(false);
+        setTimeout(() => {
+            setStep(step - 1);
+            setBackClick(false);
+        }, 500);
+    };
+
     const handleSubmitClick = async () => {
         if (productDetails.category === '' || productDetails.rating === '') {
             toast.error('Please fill all the fields');
         } else {
-            
             const response = await toast.promise(postProduct(productDetails), {
                 loading: 'Adding Product...',
                 success: 'Product Added successfully',
                 error: 'Please try again later!',
             });
+
+            // outro animation
+
+            setShowSuccessCard(true); // show success card
+            setSubmitClick(true);
+
+            setTimeout(() => {
+                setSubmitClick(false); // bounce out animation trigger for success card
+                setTimeout(() => {
+                    setShowSuccessCard(false); // hide success card
+                    setBackClick(true); // bounce out animation trigger for step three
+                    setNextClick(false);
+                    setTimeout(() => {
+                        setStep(step - 1);
+                        setBackClick(false); // bounce out animation trigger for step two
+                        setBackClick(true);
+                        setTimeout(() => {
+                            setStep(1);
+                            setBackClick(false);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 2000);
+
             // reset the form
-            setStep(1);
             setProductDetails({
                 name: '',
                 description: '',
@@ -127,30 +175,45 @@ export default function AddProduct() {
                 </div>
             </div>
 
-            {
-                /* Steps */
-                step === 1 ? (
-                    <StepOne
-                        stateAsProp={{ productDetails, setProductDetails }}
-                    />
-                ) : step === 2 ? (
-                    <StepTwo
-                        stateAsProp={{ productDetails, setProductDetails }}
-                    />
-                ) : (
-                    <StepThree
-                        stateAsProp={{ productDetails, setProductDetails }}
-                    />
-                )
-            }
+            <div className={styles.steps}>
+                {/* Steps */}
+                <StepOne
+                    stateAsProp={{ productDetails, setProductDetails }}
+                    // passing state to add animation to cards
+                    nextClickState={{ nextClick, setNextClick }}
+                    backClickState={{ backClick, setBackClick }}
+                    currentStep={step}
+                />
+
+                <StepTwo
+                    stateAsProp={{ productDetails, setProductDetails }}
+                    // passing state to add animation to cards
+                    nextClickState={{ nextClick, setNextClick }}
+                    backClickState={{ backClick, setBackClick }}
+                    currentStep={step}
+                />
+
+                <StepThree
+                    stateAsProp={{ productDetails, setProductDetails }}
+                    // passing state to add animation to cards
+                    nextClickState={{ nextClick, setNextClick }}
+                    backClickState={{ backClick, setBackClick }}
+                    currentStep={step}
+                />
+
+                <SuccessCard
+                    stateAsProp={{ productDetails, setProductDetails }}
+                    // passing state to add animation to cards
+                    showSuccessState={{ showSuccessCard, setShowSuccessCard }}
+                    submitClickState={{ submitClick, setSubmitClick }}
+                    currentStep={step}
+                />
+            </div>
 
             {/* Buttons */}
             <div className={styles.buttons}>
                 {step !== 1 && (
-                    <button
-                        className={styles.back}
-                        onClick={() => setStep(step - 1)}
-                    >
+                    <button className={styles.back} onClick={handleBackClick}>
                         {' '}
                         <FontAwesomeIcon icon={faChevronCircleLeft} /> Back
                     </button>

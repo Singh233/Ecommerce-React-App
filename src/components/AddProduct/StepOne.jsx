@@ -23,7 +23,13 @@ import toast from 'react-hot-toast';
 export default function StepOne(props) {
     const { productDetails, setProductDetails } = props.stateAsProp;
 
+    // get next click state
+    const { nextClick, setNextClick } = props.nextClickState;
 
+    // get back click state
+    const { backClick, setBackClick } = props.backClickState;
+
+    const currentStep = props.currentStep;
 
 
     const handleNameInputChange = (e) => {
@@ -38,22 +44,23 @@ export default function StepOne(props) {
             ...productDetails,
             price: e.target.value,
         });
-
     };
 
     const handleValidation = (e) => {
         if (e.target.value === '') {
             e.target.className = styles.error;
             toast.error('Field cannot be empty!');
-
         } else {
             e.target.className = styles.success;
-
         }
     };
 
     return (
-        <div className={styles.container}>
+        <div
+            className={` ${styles.container} ${
+                nextClick ? styles.animateToLeft : ''
+            }`}
+        >
             <div className={styles.left}>
                 <p>Step One</p>
             </div>
@@ -71,11 +78,13 @@ export default function StepOne(props) {
                 <label className={styles.label2} htmlFor="product-price">
                     Product Price ($)
                 </label>
-                <input 
+                <input
                     onChange={handlePriceInputChange}
                     onBlur={handleValidation}
                     value={productDetails.price}
-                    type="number" placeholder="Enter price in dollars" />
+                    type="number"
+                    placeholder="Enter price in dollars"
+                />
             </div>
         </div>
     );
