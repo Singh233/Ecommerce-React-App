@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
 
 
+
+
+
+
 // actions
 import { ADD_PRODUCTS, ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, SHOW_FAVORITES, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT } from '../actions';
 
@@ -19,10 +23,13 @@ const initialProductsState = {
 export function productsReducer(state = initialProductsState, action) {
     switch (action.type) {
         case ADD_NEW_PRODUCT:
-            console.log(action.product, 'action-----')
-            return {
+            const data = {
                 ...state,
                 products: [action.product, ...state.products],
+            }
+            localStorage.setItem('products', JSON.stringify(data.products));
+            return {
+                ...data,
             };
         case ADD_PRODUCTS:
             return {
