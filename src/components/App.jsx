@@ -8,11 +8,14 @@ import Home from '../pages/Home';
 import Products from '../pages/Products';
 import AddProduct from '../pages/AddProduct';
 import Cart from '../pages/Cart';
+import { connect } from 'react-redux';
 
 
 
-function App() {
+
+function App(props) {
     const [count, setCount] = useState(0);
+
 
     return (
         <div className="App">
@@ -29,4 +32,12 @@ function App() {
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        products: state.products,
+    };
+};
+
+const connectedAppComponent = connect(mapStateToProps)(App);
+
+export default connectedAppComponent;

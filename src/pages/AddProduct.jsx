@@ -16,9 +16,15 @@ import toast from 'react-hot-toast';
 
 import 'animate.css';
 import SuccessCard from '../components/AddProduct/SuccessCard';
+import { addNewProduct } from '../actions';
+import { connect } from 'react-redux';
 
-export default function AddProduct() {
+function AddProduct(props) {
     const [step, setStep] = useState(1);
+
+    // destructuring products reducer
+    const { productsReducer } = props;
+    const { products } = productsReducer;
 
     // state for next button click
     const [nextClick, setNextClick] = useState(false);
@@ -77,6 +83,19 @@ export default function AddProduct() {
                 success: 'Product Added successfully',
                 error: 'Please try again later!',
             });
+
+            // create new product object with colorPallete
+            const newProduct = {
+                ...response,
+                colorPalette: {
+                    primary: '#000',
+                    secondary: '#000',
+                }
+            }
+            
+            // dispatch action to add product to store
+            props.dispatch(addNewProduct(newProduct));
+            console.log(products)
 
             // outro animation
 
@@ -234,3 +253,13 @@ export default function AddProduct() {
         </div>
     );
 }
+
+const mapStateToProps = (state) => {
+    return {
+        productsReducer: state.productsReducer,
+    };
+}
+
+const connectedAddProductComponent = connect(mapStateToProps)(AddProduct);
+
+export default connectedAddProductComponent;

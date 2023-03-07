@@ -14,10 +14,15 @@ import Products from '../pages/Products'
 
 import 'animate.css';
 
+// Toast
+import toast from 'react-hot-toast';
+
 // icons
 import categoryIcon from '../assets/icons/category.svg'
 import starIcon from '../assets/icons/star.svg'
 import sortIcon from '../assets/icons/sorting.svg'
+import { connect } from 'react-redux'
+import { addToCart } from '../actions'
 
 export default function ProductCard(props) {
     const { product } = props;
@@ -26,6 +31,15 @@ export default function ProductCard(props) {
     // for action buttons
     const [addHover, setAddHover] = useState(false);
     const [editHover, setEditHover] = useState(false);
+
+
+
+    // add to cart handler
+    const handleAddToCart = () => {
+        const dispatch = props.dispatch(addToCart(product));
+        toast.success('Added to cart');
+
+    }
 
     // see details button click handler
     const seeDetailsHandler = () => {
@@ -101,6 +115,7 @@ export default function ProductCard(props) {
                     <button style={ addToCartStyling } className={styles.addToCart}
                         onMouseEnter={() => setAddHover(!addHover)}
                         onMouseLeave={() => setAddHover(!addHover)}
+                        onClick={handleAddToCart}
                         >
                         <FontAwesomeIcon icon={faBagShopping} /> Add to Bag
                     </button>
