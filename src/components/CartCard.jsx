@@ -12,42 +12,61 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import categoryIcon from '../assets/icons/category.svg';
 import starIcon from '../assets/icons/star.svg';
 import sortIcon from '../assets/icons/sorting.svg';
+import { connect } from 'react-redux';
+import { removeFromCart } from '../actions';
+import toast from 'react-hot-toast';
 
-export default function CartCard() {
+function CartCard(props) {
+    // cart reducer destructuring
+    const { cartReducer } = props;
+    const { cart, showCart, totalPrice } = cartReducer;
+
+
+    const { product } = props;
+
+    // handle remove from cart
+    const handleRemoveFromCart = () => {
+        console.log('remove from cart');
+
+        // dispatch action to remove from cart
+        props.dispatch(removeFromCart(product));
+
+        toast.success('Removed from cart');
+    }
+
     const cardBackground = {
-        // background: `url("${product.image}"), linear-gradient(${product.colorPalette.primary}, ${product.colorPalette.secondary})`,
-        // backgroundRepeat: 'no-repeat',
+        background: `url("${product.image}"), linear-gradient(to right, ${product.colorPalette.primary} 0%, ${product.colorPalette.secondary} 30%, black 90%)`,
+        backgroundRepeat: 'no-repeat',
     };
 
     return (
-        <div className={styles.cartCardContainer}>
+        <div style={cardBackground} className={styles.cartCardContainer}>
             <div className={styles.overlay}>
                 <div className={styles.image}>
                     <img
-                        src="https://i.ibb.co/d2qwpyk/13pro-Background-Removed.png"
+                        src={product.image}
                         alt=""
                     />
                 </div>
-
                 <div className={styles.details}>
                     <div className={styles.heading}>
                         <p className={styles.category}>
                             {' '}
-                            <img src={categoryIcon} alt="" /> Electronics{' '}
+                            <img src={categoryIcon} alt="" /> {product.category}{' '}
                         </p>
                         <p className={styles.rating}>
                             {' '}
-                            4 / 5 <img src={starIcon} alt="" />{' '}
+                            {product.rating} <img src={starIcon} alt="" />{' '}
                         </p>
                     </div>
-                    <p className={styles.name}> Apple Iphone 13 pro </p>
-                    <p className={styles.price}> $999 </p>
+                    <p className={styles.name}> {product.name.substring(0, 20)} </p>
+                    <p className={styles.price}> ${product.price} </p>
 
                     <div className={styles.actions}>
                         <button className={styles.moveToWishlist}>
                             <FontAwesomeIcon icon={faHeart} /> Move to Wishlist
                         </button>
-                        <button className={styles.remove}>
+                        <button onClick={handleRemoveFromCart} className={styles.remove}>
                             <FontAwesomeIcon icon={faTrash} /> Remove
                         </button>
 
@@ -59,3 +78,13 @@ export default function CartCard() {
         </div>
     );
 }
+
+const mapStateToProps = (state) => {
+    return {
+        cartReducer: state.cartReducer
+    }
+}
+
+const connectedCartCardComponent = connect(mapStateToProps)(CartCard);
+
+export default connectedCartCardComponent;

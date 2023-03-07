@@ -6,27 +6,36 @@ import Search from '../components/Search';
 import styles from '../styles/pages/Products.module.scss';
 // Toast
 import toast from 'react-hot-toast';
+import { connect } from 'react-redux';
+import { addProducts } from '../actions';
 
-export default function Products() {
-
-    // products state
-    const [products, setProducts] = useState([]);
+function Products(props) {
+    const { productsReducer, cartReducer } = props;
+    const {products, favorites, showFavorites, loading} = productsReducer;
+    
+    console.log(products, 'products-----');
 
     useEffect(() => {
 
+        if (products.length > 0) {
+            return;
+        }
+        const fetchProducts = async () => {
+            const response = await toast.promise(getProducts(), {
+                loading: 'Updating Products...',
+                success: 'Products updated successfully',
+                error: 'Please try again later!',
+            });
+            console.log(response);
+            props.dispatch(addProducts(response));
+            console.log(products, 'fetch products-----');
+        }
+        fetchProducts();
+
         
         return () => {
-            // fetch products from the api
-            const fetchProducts = async () => {
-                const response = await toast.promise(getProducts(), {
-                    loading: 'Updating Products...',
-                    success: 'Products updated successfully',
-                    error: 'Please try again later!',
-                });
-                console.log(response);
-                setProducts(response);
-            }
-            fetchProducts();
+            // cleanup
+            
         }
 
 
@@ -41,7 +50,7 @@ export default function Products() {
                 {
                     products.map((product, id) => {
                         return (
-                            <ProductCard key={id} product={product} />
+                            <ProductCard key={id} product={product} dispatch={props.dispatch} />
                         )
                     }
                     )
@@ -52,3 +61,17 @@ export default function Products() {
         </div>
     )
 }
+
+// 
+const mapStateToProps = (state) => {
+    return {
+        productsReducer: state.productsReducer,
+        searchReducer: state.searchReducer,
+        cartReducer: state.cartReducer,
+    };
+}
+
+
+const connectedProductsComponent = connect(mapStateToProps)(Products);
+
+export default connectedProductsComponent;
