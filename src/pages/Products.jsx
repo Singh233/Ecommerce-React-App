@@ -17,18 +17,26 @@ function Products(props) {
 
     useEffect(() => {
 
-        if (products.length > 0) {
-            return;
+        // check if products are already in local storage
+        if (localStorage.getItem('products') !== null) {
+            const response = toast.promise(getProducts(), {
+                loading: 'Updating Products...',
+                success: 'Products updated successfully',
+                error: 'Please try again later!',
+            });
+            props.dispatch(addProducts(JSON.parse(localStorage.getItem('products')))); // dispatch action to add products to store
+            return; // if products are already in local storage, don't fetch them again
         }
+        
+        // fetch products from api
         const fetchProducts = async () => {
             const response = await toast.promise(getProducts(), {
                 loading: 'Updating Products...',
                 success: 'Products updated successfully',
                 error: 'Please try again later!',
             });
-            console.log(response);
-            props.dispatch(addProducts(response));
-            console.log(products, 'fetch products-----');
+            props.dispatch(addProducts(response)); // dispatch action to add products to store
+            localStorage.setItem('products', JSON.stringify(response)); // save products in local storage
         }
         fetchProducts();
 
