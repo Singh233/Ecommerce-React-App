@@ -6,6 +6,7 @@
     width: 80%;
     align-items: center;
     justify-content: center;
+    padding-bottom: 100px;
 
     .heading {
         display: flex;
@@ -13,6 +14,7 @@
         width: 90%;
         justify-content: space-between;
         font-size: 1.1rem;
+        margin-bottom: 20px;
     
         .title {
             display: flex;
@@ -24,7 +26,7 @@
         .options {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             width: 10%;
             cursor: pointer;
     
@@ -50,5 +52,95 @@
                 }
             }
         }
+
+        
+    }
+
+    .checkout {
+        display: flex;
+        align-items: center;
+        width: 70vw;
+        justify-content: space-between;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+
+        background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+        background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+        background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+
+        position: fixed;
+        bottom: 10px;
+
+
+        .checkoutDetails {
+            display: flex;
+            align-items: center;
+
+            .product {
+                display: flex;
+                align-items: center;
+
+                background-color: #0acffe;
+                border: 2px solid white;
+                border-radius: 10px;
+                margin-left: 10px;
+
+                .index {
+                    margin: 0;
+                    margin-left: -20px;
+                    font-weight: 600;
+
+                }
+
+                .productName {
+                    padding: 10px 10px;
+                    margin: 0px;
+                    padding-left: 20px;
+                }
+
+                .qty {
+                    margin: 0px;
+                    padding: 10px 10px;
+                    background-color: white;
+                    color: #0acffe;
+                    border-radius: 0 8px 8px 0;
+                }
+            }
+
+        }
+
+        .nextStepButton {
+            display: flex;
+            align-items: center;
+
+            p {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin-right: 10px;
+                margin: 5px;
+            }
+
+            button {
+                padding: 10px 20px;
+                background-color: #495aff;
+                color: white;
+                border-radius: 10px;
+                border: none;
+                font-weight: 600;
+                font-size: 1rem;
+                border: 2px solid white;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    background-color: white;
+                    color: #495aff;
+                    border: 2px solid #495aff;
+                }
+            }
+        }
+        
+
     }
 }

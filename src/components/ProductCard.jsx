@@ -83,7 +83,6 @@ export default function ProductCard(props) {
                 </div>
 
                 <div className={styles.image}>
-                    <div className={styles.bgDesign}> </div>
                     <img src={product.image} alt="" />
                 </div>
 
