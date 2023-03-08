@@ -115,6 +115,11 @@ export default function ProductCard(props) {
         console.log(product.id + ' id ----')
         props.dispatch(deleteProduct(product.id));
         toast.success('Product deleted');
+        setAnimate(true);
+        setTimeout(() => {
+            setAnimate(false);
+            setMenuExpand(!menuExpand);
+        }, 500);
     }
 
 
