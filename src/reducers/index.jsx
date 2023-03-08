@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 
 // actions
-import { ADD_PRODUCTS, ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, SHOW_FAVORITES, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT } from '../actions';
+import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT } from '../actions';
 
 // actions for cart
 import { ADD_TO_CART, REMOVE_FROM_CART, SHOW_CART } from '../actions';
@@ -14,8 +14,8 @@ import { ADD_TO_CART, REMOVE_FROM_CART, SHOW_CART } from '../actions';
 // Initial products state
 const initialProductsState = {
     products: [],
-    favorites: [],
-    showFavorites: false,
+    wishlist: [],
+    showWishlist: false,
     loading: false,
 };
 
@@ -36,20 +36,33 @@ export function productsReducer(state = initialProductsState, action) {
                 ...state,
                 products: action.products,
             };
-        case ADD_TO_FAVORITES:
+        case ADD_TO_WISHLIST:
+            // add to local storage
+            const wishlist = [...state.wishlist, action.product];
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
             return {
                 ...state,
-                favorites: [...state.favorites, action.favorites],
+                wishlist,
             };
-        case REMOVE_FROM_FAVORITES:
+        case REMOVE_FROM_WISHLIST:
+            // get wishlist from local storage
+            const wishlistFromLocalStorage = JSON.parse(localStorage.getItem('wishlist'));
+
+            // remove from state
+            const newWishlist = wishlistFromLocalStorage.filter((product) => product.id !== action.product.id);
+            
+            // remove from local storage
+            localStorage.setItem('wishlist', JSON.stringify(newWishlist));
+
             return {
                 ...state,
-                favorites: state.favorites.filter((product) => product.id !== action.product.id),
+                wishlist: newWishlist,
             };
-        case SHOW_FAVORITES:
+        case SHOW_WISHLIST:
             return {
                 ...state,
-                showFavorites: action.payload,
+                showWishlist: action.payload,
             };
         case SET_LOADING:
             return {

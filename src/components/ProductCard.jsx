@@ -22,7 +22,7 @@ import categoryIcon from '../assets/icons/category.svg'
 import starIcon from '../assets/icons/star.svg'
 import sortIcon from '../assets/icons/sorting.svg'
 import { connect } from 'react-redux'
-import { addToCart } from '../actions'
+import { addToCart, removeFromWishlist } from '../actions'
 
 export default function ProductCard(props) {
     const { product } = props;
@@ -37,6 +37,12 @@ export default function ProductCard(props) {
     // add to cart handler
     const handleAddToCart = () => {
         const dispatch = props.dispatch(addToCart(product));
+
+        // check if button is clicked from wishlist
+        if (props.fromWishlist) {
+            // remove from wishlist
+            props.dispatch(removeFromWishlist(product));
+        }
         toast.success('Added to cart');
 
     }

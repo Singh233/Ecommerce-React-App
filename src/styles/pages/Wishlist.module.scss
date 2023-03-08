@@ -1,0 +1,117 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+
+    .heading {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    
+        .title {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+    
+        .options {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            cursor: pointer;
+    
+            img {
+                height: 20px;
+                padding: 10px 12px;
+                background-color: #212224;
+                border-radius: 10px;
+                box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    
+            }
+    
+            p {
+                display: flex;
+                align-items: center;
+                padding: 10px 15px;
+                background-color: #212224;
+                border-radius: 10px;
+                box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    
+                svg {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        
+    }
+
+    .productsList {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        
+
+        
+    }
+
+    .empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+        height: 50vh;
+        
+        .emptyText {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        button {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            background-color: #7918F2;
+                                    color: #fff;
+                                    font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background: white;
+                color: #7918F2;
+            }
+        }
+    }
+
+    .checkout {
+        
+
+    }
+}
+
+
+// responsive design
+@media screen and (max-width: 1250px) {
+    .container {
+        width: 90%;
+
+        
+
+    }
+}

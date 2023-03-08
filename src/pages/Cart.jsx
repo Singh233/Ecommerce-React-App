@@ -24,7 +24,6 @@ function Cart(props) {
 
     const [ cartItems, setCartItems ] = useState(cart);
 
-    const [ removeClicked, setRemoveClicked ] = useState(false);
 
 
     useEffect(() => {
@@ -65,7 +64,7 @@ function Cart(props) {
                 // iterate over the cart items
                 cartItems.map((item, index) => {
                     return (
-                        <CartCard key={index} product={item} removeClickedState={{removeClicked, setRemoveClicked}} />
+                        <CartCard key={index} product={item}  />
                     )
                 })
             }
