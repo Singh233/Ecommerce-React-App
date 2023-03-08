@@ -8,6 +8,7 @@ export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const SHOW_WISHLIST = 'SHOW_WISHLIST';
 export const SET_LOADING = 'SET_LOADING';
 export const ADD_SEARCH_RESULT = 'ADD_SEARCH_RESULT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
 // action types for cart
 export const ADD_TO_CART = 'ADD_TO_CART';
@@ -30,6 +31,14 @@ export const addNewProduct = (product) => {
     return {
         type: ADD_NEW_PRODUCT,
         product,
+    };
+}
+
+// action creator for deleting product
+export const deleteProduct = (id) => {
+    return {
+        type: DELETE_PRODUCT,
+        id,
     };
 }
 

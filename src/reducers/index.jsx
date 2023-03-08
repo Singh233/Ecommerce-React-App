@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 
 // actions
-import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT } from '../actions';
+import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT } from '../actions';
 
 // actions for cart
 import { ADD_TO_CART, REMOVE_FROM_CART, SHOW_CART } from '../actions';
@@ -23,18 +23,53 @@ const initialProductsState = {
 export function productsReducer(state = initialProductsState, action) {
     switch (action.type) {
         case ADD_NEW_PRODUCT:
+            // get products from local storage
+            const lsProducts = JSON.parse(localStorage.getItem('products')); 
+            if (lsProducts !== null) {
+                // add to local storage
+                localStorage.setItem('products', JSON.stringify([action.product, ...lsProducts]));
+            } else {
+                // add to local storage
+                localStorage.setItem('products', JSON.stringify([action.product]));
+            }
+            
+            
+
             const data = {
                 ...state,
                 products: [action.product, ...state.products],
             }
-            localStorage.setItem('products', JSON.stringify(data.products));
             return {
                 ...data,
             };
         case ADD_PRODUCTS:
+            // add from local storage
+            const productsFromLocalStorage = JSON.parse(localStorage.getItem('products'));
+            let products = [];
+            if (productsFromLocalStorage !== null) {
+                products = [...productsFromLocalStorage, ...action.products];
+            } else {
+                products = [...action.products];
+            }
             return {
                 ...state,
-                products: action.products,
+                products,
+            };
+        case DELETE_PRODUCT:
+            // delete from local storage seperately to maintain users added products
+            const productsFromLS = JSON.parse(localStorage.getItem('products'));
+            if (productsFromLS !== null) {
+                const newProductsFromLocalStorage = productsFromLS.filter((product) => product.id !== action.id);
+                localStorage.setItem('products', JSON.stringify(newProductsFromLocalStorage));
+            }
+
+
+            // delete from state
+            const newProducts = state.products.filter((product) => product.id !== action.id);
+
+            return {
+                ...state,
+                products: newProducts,
             };
         case ADD_TO_WISHLIST:
             // add to local storage

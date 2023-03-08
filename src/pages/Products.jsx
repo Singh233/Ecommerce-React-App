@@ -17,18 +17,8 @@ function Products(props) {
 
     useEffect(() => {
 
-        // check if products are already in local storage
-        if (localStorage.getItem('products') !== null) {
-            const response = toast.promise(getProducts(), {
-                loading: 'Updating Products...',
-                success: 'Products updated successfully',
-                error: 'Please try again later!',
-            });
-            props.dispatch(addProducts(JSON.parse(localStorage.getItem('products')))); // dispatch action to add products to store
-            return; // if products are already in local storage, don't fetch them again
-        }
         
-        // fetch products from api
+        // fetch products from api. Here we are fetching all the products from the api so only those products will be deleted that use have made locally
         const fetchProducts = async () => {
             const response = await toast.promise(getProducts(), {
                 loading: 'Updating Products...',
@@ -36,9 +26,10 @@ function Products(props) {
                 error: 'Please try again later!',
             });
             props.dispatch(addProducts(response)); // dispatch action to add products to store
-            localStorage.setItem('products', JSON.stringify(response)); // save products in local storage
         }
         fetchProducts();
+
+
 
         
         return () => {
