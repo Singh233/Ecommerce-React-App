@@ -35,6 +35,8 @@ export default function ProductCard(props) {
     // for animation
     const [animate, setAnimate] = useState(false);
 
+    // for edit product
+    const { editProduct, setEditProduct } = props.editProductState;
 
 
     // add to cart handler
@@ -107,7 +109,14 @@ export default function ProductCard(props) {
 
     // edit button click handler
     const handleEditClick = () => {
+        setEditProduct(product);
         
+        // close menu 
+        setAnimate(true);
+            setTimeout(() => {
+                setAnimate(false);
+                setMenuExpand(!menuExpand);
+            }, 500);
     }
 
     // delete button click handler
