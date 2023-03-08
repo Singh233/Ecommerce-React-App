@@ -22,7 +22,7 @@ import categoryIcon from '../assets/icons/category.svg'
 import starIcon from '../assets/icons/star.svg'
 import sortIcon from '../assets/icons/sorting.svg'
 import { connect } from 'react-redux'
-import { addToCart, removeFromWishlist } from '../actions'
+import { addToCart, deleteProduct, removeFromWishlist } from '../actions'
 
 export default function ProductCard(props) {
     const { product } = props;
@@ -30,7 +30,10 @@ export default function ProductCard(props) {
     const [ hide, setHide ] = useState(false);
     // for action buttons
     const [addHover, setAddHover] = useState(false);
-    const [editHover, setEditHover] = useState(false);
+    const [menuExpand, setMenuExpand] = useState(false);
+
+    // for animation
+    const [animate, setAnimate] = useState(false);
 
 
 
@@ -89,6 +92,31 @@ export default function ProductCard(props) {
 
     }
 
+    // menu button click handler
+    const handleMenuClick = () => {
+        if (menuExpand) { 
+            setAnimate(true);
+            setTimeout(() => {
+                setAnimate(false);
+                setMenuExpand(!menuExpand);
+            }, 500);
+            return;
+        }
+        setMenuExpand(!menuExpand);
+    }
+
+    // edit button click handler
+    const handleEditClick = () => {
+        
+    }
+
+    // delete button click handler
+    const handleDeleteClick = () => {
+        console.log(product.id + ' id ----')
+        props.dispatch(deleteProduct(product.id));
+        toast.success('Product deleted');
+    }
+
 
     
 
@@ -98,8 +126,19 @@ export default function ProductCard(props) {
     return (
         <div style={cardBackground} className={styles.container}>
             <div className={styles.overlay}>
-                <div className={styles.menu}>
+                <div onClick={handleMenuClick} className={styles.menu}>
                     <FontAwesomeIcon icon={faEllipsisV} />
+                </div>
+
+                <div
+                    className={`animate__animated animate__faster ${
+                        styles.menuExpanded
+                    } ${!menuExpand ? styles.hideMenu : ' animate__zoomIn'}
+                    ${animate ? ' animate__zoomOut' : ''}`}
+                >
+                    <p onClick={handleEditClick} className={styles.editButton}><FontAwesomeIcon icon={faPenToSquare} /> Edit</p>
+                    <div className={styles.border}></div>
+                    <p onClick={handleDeleteClick} className={styles.deleteButton}><FontAwesomeIcon icon={faTrash} /> Delete</p>
                 </div>
 
                 <div className={styles.image}>
