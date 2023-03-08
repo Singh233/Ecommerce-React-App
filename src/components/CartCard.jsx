@@ -32,11 +32,11 @@ function CartCard(props) {
         props.dispatch(removeFromCart(product));
 
         toast.success('Removed from cart');
+        props.removeClickedState.setRemoveClicked(!props.removeClickedState.removeClicked)
     }
 
     const cardBackground = {
         background: `url("${product.image}"), linear-gradient(to right, ${product.colorPalette.primary} 0%, ${product.colorPalette.secondary} 30%, black 90%)`,
-        backgroundRepeat: 'no-repeat',
     };
 
     return (
