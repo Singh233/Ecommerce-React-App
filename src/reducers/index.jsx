@@ -58,9 +58,10 @@ export function productsReducer(state = initialProductsState, action) {
         case DELETE_PRODUCT:
             // delete from local storage seperately to maintain users added products
             const productsFromLS = JSON.parse(localStorage.getItem('products'));
-            if (productsFromLS !== null) {
+            if (productsFromLS.length > 0) {
                 const newProductsFromLocalStorage = productsFromLS.filter((product) => product.id !== action.id);
                 localStorage.setItem('products', JSON.stringify(newProductsFromLocalStorage));
+                console.log(newProductsFromLocalStorage, 'newProductsFromLocalStorage')
             }
 
 
@@ -69,7 +70,7 @@ export function productsReducer(state = initialProductsState, action) {
 
             return {
                 ...state,
-                products: newProducts,
+                products: [...newProducts],
             };
         case ADD_TO_WISHLIST:
             // add to local storage

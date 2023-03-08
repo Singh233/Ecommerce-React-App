@@ -90,7 +90,8 @@ function AddProduct(props) {
                 colorPalette: {
                     primary: '#000',
                     secondary: '#000',
-                }
+                },
+                id: products.length + 1,
             }
             
             // dispatch action to add product to store
