@@ -9,12 +9,18 @@ import Products from '../pages/Products';
 import AddProduct from '../pages/AddProduct';
 import Cart from '../pages/Cart';
 import { connect } from 'react-redux';
+import Wishlist from '../pages/Wishlist';
 
 
 
 
 function App(props) {
     const [count, setCount] = useState(0);
+
+    // destructuring the products reducer
+    const { productsReducer } = props;
+    const { products, wishlist } = productsReducer;
+
 
 
     return (
@@ -26,6 +32,7 @@ function App(props) {
                 <Route path="/products" element={<Products />} />
                 <Route path="/add-product" element={<AddProduct />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/wishlist" element={<Wishlist dispatch={props.dispatch} products={wishlist} />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </div>
@@ -34,7 +41,7 @@ function App(props) {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products,
+        productsReducer: state.productsReducer,
     };
 };
 

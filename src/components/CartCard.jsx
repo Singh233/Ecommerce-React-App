@@ -13,13 +13,17 @@ import categoryIcon from '../assets/icons/category.svg';
 import starIcon from '../assets/icons/star.svg';
 import sortIcon from '../assets/icons/sorting.svg';
 import { connect } from 'react-redux';
-import { removeFromCart } from '../actions';
+import { addToWishlist, removeFromCart } from '../actions';
 import toast from 'react-hot-toast';
 
 function CartCard(props) {
     // cart reducer destructuring
     const { cartReducer } = props;
     const { cart, showCart, totalPrice } = cartReducer;
+
+    // product destructuring
+    const { productsReducer } = props;
+    const { products, wishlist } = productsReducer;
 
 
     const { product } = props;
@@ -32,7 +36,19 @@ function CartCard(props) {
         props.dispatch(removeFromCart(product));
 
         toast.success('Removed from cart');
-        props.removeClickedState.setRemoveClicked(!props.removeClickedState.removeClicked)
+    }
+
+    // handle move to wishlist
+    const handleMoveToWishlist = () => {
+        console.log('move to wishlist');
+
+        // dispatch action to add to wishlist
+        props.dispatch(addToWishlist(product));
+
+        // dispatch action to remove from cart
+        props.dispatch(removeFromCart(product));
+
+        toast.success('Added to wishlist');
     }
 
     const cardBackground = {
@@ -63,7 +79,7 @@ function CartCard(props) {
                     <p className={styles.price}> ${product.price} </p>
 
                     <div className={styles.actions}>
-                        <button className={styles.moveToWishlist}>
+                        <button onClick={handleMoveToWishlist} className={styles.moveToWishlist}>
                             <FontAwesomeIcon icon={faHeart} /> Move to Wishlist
                         </button>
                         <button onClick={handleRemoveFromCart} className={styles.remove}>
@@ -81,6 +97,7 @@ function CartCard(props) {
 
 const mapStateToProps = (state) => {
     return {
+        productsReducer: state.productsReducer,
         cartReducer: state.cartReducer
     }
 }

@@ -3,9 +3,9 @@
 // define the action types
 export const ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT';
 export const ADD_PRODUCTS = 'SET_PRODUCTS';
-export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
-export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
-export const SHOW_FAVORITES = 'SHOW_FAVORITES';
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
+export const SHOW_WISHLIST = 'SHOW_WISHLIST';
 export const SET_LOADING = 'SET_LOADING';
 export const ADD_SEARCH_RESULT = 'ADD_SEARCH_RESULT';
 
@@ -48,3 +48,20 @@ export const removeFromCart = (product) => {
         product,
     };
 }
+
+// action creator for adding to wishlist
+export const addToWishlist = (product) => {
+    return {
+        type: ADD_TO_WISHLIST,
+        product,
+    };
+}
+
+// action creator for removing from wishlist
+export const removeFromWishlist = (product) => {
+    return {
+        type: REMOVE_FROM_WISHLIST,
+        product,
+    };
+}
+
