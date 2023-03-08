@@ -1,0 +1,216 @@
+
+
+
+
+.editProductContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.401);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    width: 100vw;
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+
+    .closeIcon {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        cursor: pointer;
+        z-index: 2;
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .cardContainer {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        height: 60vh;
+        width: 57vw;
+        background-color: black;
+        border-radius: 20px;
+    
+        // background: url("https://i.ibb.co/d2qwpyk/13pro-Background-Removed.png"), linear-gradient(to right ,#031059 0%, #1455D9 30%, black 80%);
+        background-repeat: no-repeat !important;
+    
+    
+        .overlay {
+            display: flex;
+            // align-items: center;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        
+            height: inherit;
+            width: inherit;
+    
+            .image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        
+                img {
+                    position: relative;
+                    z-index: 2;
+                    height: 320px;
+                    margin-top: 0px;
+                    margin-left: 30px;
+                }
+                
+            }
+    
+    
+            .details {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+
+                input {
+                    padding: 10px;
+                    border-radius: 10px;
+                    outline: none;
+                    border: none;
+                    margin: 15px;
+                    background-color: rgba(33, 34, 36, 0.637);
+                    font-size: 1rem;
+                    border: 2px solid #2d2e30;
+        
+                    transition: all 0.3s ease-in-out;
+        
+                    &:focus {
+                        border: 2px solid #005bea;
+                    }
+                }
+
+                textarea {
+                    resize: none;
+                    padding: 10px;
+                    border-radius: 10px;
+                    outline: none;
+                    border: none;
+                    margin: 5px;
+                    background-color: rgba(33, 34, 36, 0.637);
+                    font-size: 1rem;
+                    border: 2px solid #2a2b2d;
+        
+                    transition: all 0.2s ease-in-out;
+        
+                    &:focus {
+                        border: 2px solid #005bea;
+                    }
+                }
+        
+                
+        
+                
+        
+                .nameAndPrice, .categoryAndRating, .description {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .nameInput {
+
+                        input {
+                            width: 350px;
+                        }
+                    }
+                    
+                }
+
+                .nameAndPrice {
+                    flex-direction: column;
+                    justify-content: center;
+                }
+    
+    
+                .actions {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    margin-top: 20px;
+                    
+                    
+            
+                    .saveButton {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 15px;
+                        border-radius: 10px;
+                        border: 2px solid #005bea;
+                        background-color: transparent;
+                        transition: all 0.3s ease-in-out;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        background-color: #005bea;
+                        color: white;
+                        font-weight: 600;
+            
+                        svg {
+                            font-size: 1.3rem;
+                            margin-right: 7px;
+                        }
+        
+                        &:hover {
+                            background-color: white;
+                            color: #005bea;
+                        }
+            
+                        
+                    }
+    
+    
+                    .cancelButton {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 15px;
+                        border-radius: 10px;
+                        border: 2px solid crimson;
+                        background-color: transparent;
+                        transition: all 0.3s ease-in-out;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        background-color: crimson;
+                        color: white;
+                        margin-left: 10px;
+                        font-weight: 600;
+
+                        svg {
+                            font-size: 1.3rem;
+                            margin-right: 7px;
+                        }
+        
+                        &:hover {
+                            background-color: white;
+                            color: crimson;
+                            border-color: crimson;
+                        }
+            
+                        
+                    }
+            
+    
+                }
+            }
+    
+        }
+    
+    }
+
+}
+
+.hide {
+    display: none !important;
+}

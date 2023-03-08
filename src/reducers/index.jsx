@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 
 // actions
-import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT } from '../actions';
+import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT } from '../actions';
 
 // actions for cart
 import { ADD_TO_CART, REMOVE_FROM_CART, SHOW_CART } from '../actions';
@@ -64,7 +64,6 @@ export function productsReducer(state = initialProductsState, action) {
                 console.log(newProductsFromLocalStorage, 'newProductsFromLocalStorage')
             }
 
-
             // delete from state
             const newProducts = state.products.filter((product) => product.id !== action.id);
 
@@ -72,6 +71,33 @@ export function productsReducer(state = initialProductsState, action) {
                 ...state,
                 products: [...newProducts],
             };
+        case UPDATE_PRODUCT:
+            // update from local storage seperately to maintain users added products
+            const productsFromLocalStorage3 = JSON.parse(localStorage.getItem('products'));
+            if (productsFromLocalStorage3.length > 0) {
+                const newProductsFromLocalStorage = productsFromLocalStorage3.map((product) => {
+                    if (product.id === action.product.id) {
+                        return action.product;
+                    }
+                    return product;
+                });
+                localStorage.setItem('products', JSON.stringify(newProductsFromLocalStorage));
+            }
+
+            // update from state
+            const updatedProducts = state.products.map((product) => {
+                if (product.id === action.product.id) {
+                    return action.product;
+                }
+                return product;
+            });
+
+            return {
+                ...state,
+                products: [...updatedProducts],
+            };
+
+
         case ADD_TO_WISHLIST:
             // add to local storage
             const wishlist = [...state.wishlist, action.product];
