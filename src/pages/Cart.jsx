@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // styles
 import styles from '../styles/pages/Cart.module.scss';
@@ -22,6 +22,31 @@ function Cart(props) {
     const { cartReducer } = props;
     const { cart, showCart, totalPrice } = cartReducer;
 
+    const [ cartItems, setCartItems ] = useState(cart);
+
+    const [ removeClicked, setRemoveClicked ] = useState(false);
+
+
+    useEffect(() => {
+
+        // check if local storage has cart and set it to the cart reducer
+        if (localStorage.getItem('cart')) {
+            const cartStore = JSON.parse(localStorage.getItem('cart'));
+            setCartItems(cartStore);
+        }
+        
+
+
+
+
+        
+        return () => {
+            // cleanup
+            
+        }
+
+
+    }, [localStorage.getItem('cart')])
 
     return (
         <div className={styles.container}>
@@ -38,9 +63,9 @@ function Cart(props) {
 
             {
                 // iterate over the cart items
-                cart.map((item, index) => {
+                cartItems.map((item, index) => {
                     return (
-                        <CartCard key={index} product={item} />
+                        <CartCard key={index} product={item} removeClickedState={{removeClicked, setRemoveClicked}} />
                     )
                 })
             }
@@ -49,9 +74,9 @@ function Cart(props) {
                 <div className={styles.checkoutDetails}>
                     {
                         // iterate over the cart items
-                        cart.map((item, index) => {
+                        cartItems.map((item, index) => {
                             return (
-                                <div className={styles.product}>
+                                <div key={index} className={styles.product}>
                                     <p className={styles.index}> {index + 1}. </p>
                                     <p className={styles.productName}>{item.name.substring(0, 17)}</p>
                                     <p className={styles.qty}>1</p> 
