@@ -18,6 +18,8 @@ export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
 export const SORT_PRODUCTS_LOW_TO_HIGH = 'SORT_PRODUCTS_LOW_TO_HIGH';
 export const SORT_PRODUCTS_HIGH_TO_LOW = 'SORT_PRODUCTS_HIGH_TO_LOW';
 export const SORT_BY_LATEST = 'SORT_BY_LATEST';
+export const SORT_BY_ELECTRONICS = 'SORT_BY_ELECTRONICS';
+export const SORT_BY_HOME_AND_KITCHEN = 'SORT_BY_HOME_AND_KITCHEN';
 
 // action types for cart
 export const ADD_TO_CART = 'ADD_TO_CART';
@@ -116,4 +118,18 @@ export const sortByLatest = (products) => {
     };
 }
 
+// action creator for sorting product by Electronics category
+export const sortByElectronics = (products) => {
+    return {
+        type: SORT_BY_ELECTRONICS,
+        products,
+    };
+}
 
+// action creator for sorting product by Home and kitchen category
+export const sortByHomeAndKitchen = (products) => {
+    return {
+        type: SORT_BY_HOME_AND_KITCHEN,
+        products,
+    };
+}
