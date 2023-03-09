@@ -50,7 +50,7 @@ function Products(props) {
 
     return (
         <div className={styles.container}>
-            <Search />
+            <Search dispatch={props.dispatch} products={products}/>
             <Filter dispatch={props.dispatch} products={products}/>
 
             <div className={styles.productsList}>

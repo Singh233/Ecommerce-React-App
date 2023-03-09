@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 
 // actions
-import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, SORT_PRODUCTS_LOW_TO_HIGH, SORT_PRODUCTS_HIGH_TO_LOW, SORT_BY_LATEST } from '../actions';
+import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, SORT_PRODUCTS_LOW_TO_HIGH, SORT_PRODUCTS_HIGH_TO_LOW, SORT_BY_LATEST, SORT_BY_ELECTRONICS, SORT_BY_HOME_AND_KITCHEN } from '../actions';
 
 // actions for cart
 import { ADD_TO_CART, REMOVE_FROM_CART, SHOW_CART } from '../actions';
@@ -32,6 +32,16 @@ export function productsReducer(state = initialProductsState, action) {
                 // add to local storage
                 localStorage.setItem('products', JSON.stringify([action.product]));
             }
+
+            // add to all products local storage
+            const allProducts = JSON.parse(localStorage.getItem('allProducts'));
+            if (allProducts !== null) {
+                // add to local storage
+                localStorage.setItem('allProducts', JSON.stringify([action.product, ...allProducts]));
+            } else {
+                // add to local storage
+                localStorage.setItem('allProducts', JSON.stringify([action.product]));
+            }
             
             
 
@@ -45,12 +55,18 @@ export function productsReducer(state = initialProductsState, action) {
         case ADD_PRODUCTS:
             // add from local storage
             const productsFromLocalStorage = JSON.parse(localStorage.getItem('products'));
+
             let products = [];
             if (productsFromLocalStorage !== null) {
                 products = [...productsFromLocalStorage, ...action.products];
             } else {
                 products = [...action.products];
             }
+
+            
+            // add products to local storage that contains all products
+            localStorage.setItem('allProducts', JSON.stringify(products));
+            console.log(JSON.parse(localStorage.getItem('allProducts')), 'allProducts')
             return {
                 ...state,
                 products,
@@ -160,7 +176,23 @@ export function productsReducer(state = initialProductsState, action) {
                 ...state,
                 products: products2,
             };
-                
+        case SORT_BY_ELECTRONICS:
+            const allProductsLocalStorage = JSON.parse(localStorage.getItem('allProducts'));
+            const electronics = allProductsLocalStorage.filter((product) => product.category === "Electronics");
+            console.log(electronics, 'electronics')
+            return {
+                ...state,
+                products: electronics,
+            };
+        case SORT_BY_HOME_AND_KITCHEN: 
+            // get all products from local storage of all products
+            const allProductsLocalStorage2 = JSON.parse(localStorage.getItem('allProducts'));
+            const homeAndKitchen = allProductsLocalStorage2.filter((product) => product.category === "Home & Kitchen");
+            console.log(homeAndKitchen, 'homeAndKitchen')
+            return {
+                ...state,
+                products: homeAndKitchen,
+            };
         default:
             return state;
     }

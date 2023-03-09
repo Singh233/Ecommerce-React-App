@@ -44,6 +44,7 @@ export default function Wishlist(props) {
                     
                 </div>
             </div>
+            
             <div className={styles.productsList}>
                 {
                     // iterate over the cart items
