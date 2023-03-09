@@ -11,6 +11,14 @@ export const ADD_SEARCH_RESULT = 'ADD_SEARCH_RESULT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 
+// action types for sorting
+export const SORT_BY_PRICE = 'SORT_BY_PRICE';
+export const SORT_BY_RATING = 'SORT_BY_RATING';
+export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
+export const SORT_PRODUCTS_LOW_TO_HIGH = 'SORT_PRODUCTS_LOW_TO_HIGH';
+export const SORT_PRODUCTS_HIGH_TO_LOW = 'SORT_PRODUCTS_HIGH_TO_LOW';
+export const SORT_BY_LATEST = 'SORT_BY_LATEST';
+
 // action types for cart
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
@@ -82,4 +90,30 @@ export const removeFromWishlist = (product) => {
         product,
     };
 }
+
+
+// action creator for sorting product from low to high
+export const sortProductsLowToHigh = (products) => {
+    return {
+        type: SORT_PRODUCTS_LOW_TO_HIGH,
+        products,
+    };
+}
+
+// action creator for sorting product from high to low
+export const sortProductsHighToLow = (products) => {
+    return {
+        type: SORT_PRODUCTS_HIGH_TO_LOW,
+        products,
+    };
+}
+
+// action creator for sorting product by latest
+export const sortByLatest = (products) => {
+    return {
+        type: SORT_BY_LATEST,
+        products,
+    };
+}
+
 

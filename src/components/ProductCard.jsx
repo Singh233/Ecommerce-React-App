@@ -4,7 +4,7 @@ import styles from '../styles/ProductCard.module.scss'
 
 // fontawesome for icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
@@ -22,7 +22,7 @@ import categoryIcon from '../assets/icons/category.svg'
 import starIcon from '../assets/icons/star.svg'
 import sortIcon from '../assets/icons/sorting.svg'
 import { connect } from 'react-redux'
-import { addToCart, deleteProduct, removeFromWishlist } from '../actions'
+import { addToCart, addToWishlist, deleteProduct, removeFromWishlist } from '../actions'
 
 export default function ProductCard(props) {
     const { product } = props;
@@ -35,8 +35,7 @@ export default function ProductCard(props) {
     // for animation
     const [animate, setAnimate] = useState(false);
 
-    // for edit product
-    const { editProduct, setEditProduct } = props.editProductState;
+    
 
 
     // add to cart handler
@@ -109,6 +108,9 @@ export default function ProductCard(props) {
 
     // edit button click handler
     const handleEditClick = () => {
+        // for edit product
+        const { editProduct, setEditProduct } = props.editProductState;
+
         setEditProduct(product);
         
         // close menu 
@@ -131,6 +133,22 @@ export default function ProductCard(props) {
         }, 500);
     }
 
+    // like button click handler
+    const handleLikeClick = () => {
+        console.log('like clicked');
+        setAnimate(true);
+        setTimeout(() => {
+            setAnimate(false);
+            setMenuExpand(!menuExpand);
+        }, 500);
+
+        // dispatch action to add to wishlist
+        props.dispatch(addToWishlist(product));
+
+        toast.success('Added to wishlist');
+    }
+
+
 
     
 
@@ -140,9 +158,13 @@ export default function ProductCard(props) {
     return (
         <div style={cardBackground} className={styles.container}>
             <div className={styles.overlay}>
-                <div onClick={handleMenuClick} className={styles.menu}>
-                    <FontAwesomeIcon icon={faEllipsisV} />
-                </div>
+                {
+                    props.editProductState &&
+                    <div onClick={handleMenuClick} className={styles.menu}>
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                    </div>
+                }
+                
 
                 <div
                     className={`animate__animated animate__faster ${
@@ -150,9 +172,12 @@ export default function ProductCard(props) {
                     } ${!menuExpand ? styles.hideMenu : ' animate__zoomIn'}
                     ${animate ? ' animate__zoomOut' : ''}`}
                 >
+                    <p onClick={handleLikeClick} className={styles.likeButton}><FontAwesomeIcon icon={faHeart} /> Like</p>
+                    <div className={styles.border}></div>
                     <p onClick={handleEditClick} className={styles.editButton}><FontAwesomeIcon icon={faPenToSquare} /> Edit</p>
                     <div className={styles.border}></div>
                     <p onClick={handleDeleteClick} className={styles.deleteButton}><FontAwesomeIcon icon={faTrash} /> Delete</p>
+                    
                 </div>
 
                 <div className={styles.image}>

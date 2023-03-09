@@ -113,6 +113,25 @@ export default function EditProduct(props) {
         toast.success('Product updated successfully!');
     };
 
+    // handle cancel button click
+    const handleCancelButtonClick = () => {
+        setHide(true);
+        setEditProduct({
+            id: 1,
+            image: '',
+            name: '',
+            category: '',
+            description: '',
+            price: 0,
+            rating: 0,
+            colorPalette: {
+                primary: '#031059',
+                secondary: '#1455D9',
+            },
+        });
+    };
+
+
     return (
         <div
             className={` ${styles.editProductContainer} ${
@@ -199,7 +218,7 @@ export default function EditProduct(props) {
                                 <FontAwesomeIcon icon={faCheck} />
                                 Save
                             </button>
-                            <button className={styles.cancelButton}>
+                            <button onClick={handleCancelButtonClick} className={styles.cancelButton}>
                                 <FontAwesomeIcon icon={faCancel} />
                                 Cancel
                             </button>

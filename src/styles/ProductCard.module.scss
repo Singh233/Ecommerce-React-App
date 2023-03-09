@@ -41,10 +41,11 @@ $colorGray: rgba(51, 52, 54, 0.682);
 
         .menu {
             position: absolute;
-            right: 20px;
-            top: 15px;
+            right: 0px;
+            top: 5px;
             cursor: pointer;
             z-index: 2;
+            padding: 20px;
 
             svg {
                 font-size: 1.2rem;
@@ -83,11 +84,16 @@ $colorGray: rgba(51, 52, 54, 0.682);
 
             .editButton {
                 padding: 14px 28px;
-                border-radius: 10px 10px 0 0;
             }
 
             .deleteButton {
                 border-radius: 0 0 10px 10px;
+            }
+
+            .likeButton {
+                padding: 14px 28px;
+
+                border-radius: 10px 10px 0 0;
             }
 
         }

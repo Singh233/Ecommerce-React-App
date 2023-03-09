@@ -51,7 +51,7 @@ function Products(props) {
     return (
         <div className={styles.container}>
             <Search />
-            <Filter />
+            <Filter dispatch={props.dispatch} products={products}/>
 
             <div className={styles.productsList}>
                 {products.map((product, id) => {
