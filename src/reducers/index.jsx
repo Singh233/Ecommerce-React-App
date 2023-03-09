@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 
 // actions
-import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT } from '../actions';
+import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, SORT_PRODUCTS_LOW_TO_HIGH, SORT_PRODUCTS_HIGH_TO_LOW, SORT_BY_LATEST } from '../actions';
 
 // actions for cart
 import { ADD_TO_CART, REMOVE_FROM_CART, SHOW_CART } from '../actions';
@@ -131,6 +131,36 @@ export function productsReducer(state = initialProductsState, action) {
                 ...state,
                 loading: action.value,
             };
+
+        case SORT_PRODUCTS_LOW_TO_HIGH:
+            const sortedProducts = [...state.products].sort((a, b) => {
+                return a.price - b.price; // sort by price low to high
+            });
+            return {
+                ...state,
+                products: sortedProducts,
+            };
+        case SORT_PRODUCTS_HIGH_TO_LOW:
+            const sortedProducts2 = [...state.products].sort((a, b) => {
+                return b.price - a.price; // sort by price high to low
+            });
+            return {
+                ...state,
+                products: sortedProducts2,
+            };
+        case SORT_BY_LATEST:
+            const productsFromLocalStorage4 = JSON.parse(localStorage.getItem('products'));
+            let products2 = [];
+            if (productsFromLocalStorage4 !== null) {
+                products2 = [...productsFromLocalStorage4, ...action.products];
+            } else {
+                products2 = [...action.products];
+            }
+            return {
+                ...state,
+                products: products2,
+            };
+                
         default:
             return state;
     }
