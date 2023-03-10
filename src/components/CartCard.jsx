@@ -75,15 +75,15 @@ function CartCard(props) {
                             {product.rating} <img src={starIcon} alt="" />{' '}
                         </p>
                     </div>
-                    <p className={styles.name}> {product.name.substring(0, 20)} </p>
+                    <p className={styles.name}> {product.name.substring(0, 16)} </p>
                     <p className={styles.price}> ${product.price} </p>
 
                     <div className={styles.actions}>
                         <button onClick={handleMoveToWishlist} className={styles.moveToWishlist}>
-                            <FontAwesomeIcon icon={faHeart} /> Move to Wishlist
+                            <FontAwesomeIcon icon={faHeart} /> <p>Move to Wishlist</p> 
                         </button>
                         <button onClick={handleRemoveFromCart} className={styles.remove}>
-                            <FontAwesomeIcon icon={faTrash} /> Remove
+                            <FontAwesomeIcon icon={faTrash} /> <p>Remove</p>
                         </button>
 
                         

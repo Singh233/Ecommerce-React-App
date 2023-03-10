@@ -76,6 +76,7 @@
 
 @media screen and (max-width: 800px) {
     .navContainer {
+        width: 95vw;
 
         .branding {         
 
@@ -188,7 +189,11 @@
 
 
 @media screen and (max-width: 425px) {
+    .navContainer {
+        width: 95vw;
+    }
     .smNavContainer {
+        
         .innerContainer {
             min-width: 300px;
         }

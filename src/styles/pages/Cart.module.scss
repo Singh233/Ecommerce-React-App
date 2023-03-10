@@ -13,12 +13,14 @@
         justify-content: space-between;
         font-size: 1.1rem;
         margin-bottom: 20px;
+        min-width: 600px;
 
         .title {
             display: flex;
             align-items: center;
             font-size: 2rem;
             font-weight: 600;
+            margin-left: 10px;
         }
 
         .options {
@@ -62,7 +64,7 @@
                 border-radius: 6px;
                 padding: 5px 10px;
                 border: white;
-                
+
                 font-size: 0.8rem;
                 position: absolute;
                 z-index: 1;
@@ -80,7 +82,7 @@
                     // border color to make it look like a downward pointing triangle
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;
-                    
+
                     border-top: 5px solid white;
                     // border-color: transparent rgba(255, 255, 255, 0.953) transparent transparent;
                 }
@@ -206,6 +208,113 @@
                     background-color: white;
                     color: #495aff;
                     border: 2px solid #495aff;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+
+        .checkout {
+            
+
+            .checkoutDetails {
+                    display: none;
+                
+            }
+
+            .nextStepButton {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .cartCardContainer {
+
+        min-width: 550px;
+
+    }
+}
+
+@media screen and (max-width: 887px) {
+    .container {
+
+
+        .heading {
+
+            min-width: 530px
+        }
+    }
+}
+
+
+@media screen and (max-width: 607px) {
+    .container {
+
+
+        .heading {
+
+            min-width: 85vw;
+        }
+
+        .checkout {
+
+            padding: 10px;
+            
+
+            .checkoutDetails {
+                    display: none;
+                
+            }
+
+            .nextStepButton {
+                p {
+                    font-size: 1.5rem;
+                }
+
+                button {
+                    padding: 10px 20px;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .container {
+
+
+        .heading {
+
+            min-width: 85vw;
+        }
+
+        .checkout {
+            width: 80vw;
+
+            padding: 10px;
+            
+
+            .checkoutDetails {
+                    display: none;
+                
+            }
+
+            .nextStepButton {
+                p {
+                    font-size: 1.5rem;
+                }
+
+                button {
+                    padding: 10px 20px;
+                    font-size: 1rem;
                 }
             }
         }
