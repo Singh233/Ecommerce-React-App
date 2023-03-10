@@ -158,7 +158,7 @@ function AddProduct(props) {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={`animate__animated ${styles.container} animate__fadeIn`}>
             {/* Heading */}
             <div className={styles.heading}>
                 <p>Add new Product to the List</p>

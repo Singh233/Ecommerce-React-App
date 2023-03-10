@@ -1,0 +1,97 @@
+
+
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+
+    .heading {
+        
+        p {
+            font-size: 2.7rem;
+            margin: 10px;
+        }
+    }
+
+    .subHeading {
+        text-align: center;
+        width: 40%;
+        color: #ffffff9b;
+        margin: 10px;
+        p {
+            font-size: 1.1rem;
+            margin: 10px;
+        }
+    }
+
+
+    .cardsContainer {
+
+        display: flex;
+        align-items: center;
+
+
+        justify-content: space-between;
+
+        .card1, .card2, .card3 {
+            width: 300px;
+            height: 400px;
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+                                    border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px #0000001a;
+            margin: 20px;
+            cursor: pointer;
+
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+
+            transition: all 0.25s ease-in-out;
+            .cardHeading {
+                font-size: 1.5rem;
+                margin: 10px;
+            }
+
+            .cardSubHeading {
+                font-size: 1rem;
+                margin: 10px;
+            }
+        }
+
+        .card1 {
+            color: #043d6e;
+
+            &:hover {
+                // color ful box shadow
+                box-shadow: 0 0 30px #4facfe57, 0 0 40px #00f1fe58;
+            }
+        }
+
+        .card2 {
+            color: #067930;
+            background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+
+            &:hover {
+                // color ful box shadow
+                box-shadow: 0 0 30px #84faaf4f, 0 0 40px #8fd2f451;
+            }
+        }
+
+        .card3 {
+            color: #930b1d;
+            background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+
+            &:hover {
+                // color ful box shadow
+                box-shadow: 0 0 30px #f193fb47, 0 0 40px #f5576c52;
+            }
+        }
+    }
+    
+}

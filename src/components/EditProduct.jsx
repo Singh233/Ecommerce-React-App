@@ -134,8 +134,8 @@ export default function EditProduct(props) {
 
     return (
         <div
-            className={` ${styles.editProductContainer} ${
-                hide ? styles.hide : ''
+            className={`animate__animated ${styles.editProductContainer} ${
+                hide ? styles.hide : 'animate__fadeIn'
             }`}
         >
             {/* close icon */}

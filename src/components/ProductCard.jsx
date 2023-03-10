@@ -51,6 +51,12 @@ export default function ProductCard(props) {
 
     }
 
+    // dislike handler
+    const handleDislike = () => {
+        props.dispatch(removeFromWishlist(product));
+        toast.success('Removed from wishlist');
+    }
+
     // see details button click handler
     const seeDetailsHandler = () => {
 
@@ -156,12 +162,16 @@ export default function ProductCard(props) {
 
 
     return (
-        <div style={cardBackground} className={styles.container}>
+        <div style={cardBackground} className={` ${styles.container} animate__animated animate__fadeIn`}>
             <div className={styles.overlay}>
                 {
-                    props.editProductState &&
+                    props.editProductState ?
                     <div onClick={handleMenuClick} className={styles.menu}>
                         <FontAwesomeIcon icon={faEllipsisV} />
+                    </div>
+                    :
+                    <div onClick={handleDislike} className={styles.menu}>
+                        <FontAwesomeIcon icon={faHeart} />
                     </div>
                 }
                 

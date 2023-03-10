@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 
 // actions
-import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, SORT_PRODUCTS_LOW_TO_HIGH, SORT_PRODUCTS_HIGH_TO_LOW, SORT_BY_LATEST, SORT_BY_ELECTRONICS, SORT_BY_HOME_AND_KITCHEN } from '../actions';
+import { ADD_PRODUCTS, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SHOW_WISHLIST, SET_LOADING, ADD_SEARCH_RESULT, ADD_NEW_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, SORT_PRODUCTS_LOW_TO_HIGH, SORT_PRODUCTS_HIGH_TO_LOW, SORT_BY_LATEST, SORT_BY_ELECTRONICS, SORT_BY_HOME_AND_KITCHEN, SORT_BY_CATEGORY_ALL } from '../actions';
 
 // actions for cart
 import { ADD_TO_CART, REMOVE_FROM_CART, SHOW_CART } from '../actions';
@@ -193,6 +193,12 @@ export function productsReducer(state = initialProductsState, action) {
                 ...state,
                 products: homeAndKitchen,
             };
+        case SORT_BY_CATEGORY_ALL:
+            const allProductsLocalStorage3 = JSON.parse(localStorage.getItem('allProducts'));
+            return {
+                ...state,
+                products: allProductsLocalStorage3,
+            };
         default:
             return state;
     }
@@ -232,6 +238,16 @@ export function cartReducer(state = initialCartState, action) {
         case ADD_TO_CART:
             // add to local storage
             localStorage.setItem('cart', JSON.stringify([...state.cart, action.product]));
+            const totalPrice = localStorage.getItem('totalPrice');
+            console.log(totalPrice, 'totalPrice')
+
+            // add total price to local storage
+            if (totalPrice) {
+                localStorage.setItem('totalPrice', JSON.stringify(parseInt(localStorage.getItem('totalPrice')) + Math.round(parseFloat(action.product.price))));
+            } else {
+                localStorage.setItem('totalPrice', JSON.stringify(Math.round(parseFloat(action.product.price))));
+            }
+
             return {
                 ...state,
                 cart: [...state.cart, action.product],
@@ -244,10 +260,13 @@ export function cartReducer(state = initialCartState, action) {
             // remove from state
             const cart = cartFromLocalStorage.filter((product) => product.id !== action.product.id);
 
-            console.log('action ', cart);
+            // update total price in local storage
+            localStorage.setItem('totalPrice', JSON.stringify(localStorage.getItem('totalPrice') - Math.round(parseFloat(action.product.price))));
             
             // remove from local storage
             localStorage.setItem('cart', JSON.stringify(cart));
+
+
             // update state
             return {
                 ...state,

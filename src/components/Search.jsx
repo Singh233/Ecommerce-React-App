@@ -10,10 +10,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { faDiceD6 } from '@fortawesome/free-solid-svg-icons'
-import { sortByElectronics, sortByHomeAndKitchen } from '../actions'
+import { sortByAll, sortByElectronics, sortByHomeAndKitchen } from '../actions'
+import toast from 'react-hot-toast'
 
 export default function Search(props) {
     const [showOptions, setShowOptions] = useState(true);
+
+    // state for current sort option
+    const [currentSort, setCurrentSort] = useState('Category');
 
 
     const handleCategoryClick = () => {
@@ -22,17 +26,25 @@ export default function Search(props) {
 
     const handleCategoryClickAll = () => {
         setShowOptions(!showOptions);
+        props.dispatch(sortByAll(props.products));
+        toast.success('All products displayed');
+        setCurrentSort('Category');
     }
 
     const handleCategoryClickHomeAndKitchen = () => {
         setShowOptions(!showOptions);
         props.dispatch(sortByHomeAndKitchen(props.products));
+        toast.success('Home and kitchen products displayed');
+        setCurrentSort('Home and kitchen');
     }
 
     const handleCategoryClickElectronics = () => {
         setShowOptions(!showOptions);
         props.dispatch(sortByElectronics(props.products));
+        toast.success('Electronics products displayed');
+        setCurrentSort('Electronics');
     }
+
 
 
     
@@ -52,9 +64,9 @@ export default function Search(props) {
             {/* Search input */}
             <div className={styles.searchInput}>
                 <div onClick={handleCategoryClick} className={styles.categoryDropdown}>
-                    <p>Category <FontAwesomeIcon icon={faChevronDown} /> </p>
+                    <p>{currentSort} <FontAwesomeIcon icon={faChevronDown} /> </p>
                 </div>
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder="Coming soon!" disabled />
                 <FontAwesomeIcon className={styles.searchIcon} icon={faSearch} /> 
 
                 <div className={`animate__animated animate__faster ${styles.sortOptions} ${showOptions ? styles.hide : 'animate__zoomIn'}`}>
