@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 70vh;
 
     .heading {
@@ -31,9 +30,10 @@
 
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
 
 
-        justify-content: space-between;
+        justify-content: space-around;
 
         .card1, .card2, .card3 {
             width: 300px;
@@ -94,4 +94,41 @@
         }
     }
     
+}
+
+@media screen and (max-width: 425px) {
+    .homeContainer {
+
+        .heading {
+            p {
+                font-size: 1.9rem;
+                margin: 5px;
+                margin-top: 20px;
+                font-weight: 600;
+            }
+        }
+        .subHeading {
+            width: 80%;
+            p {
+                font-size: 0.9rem;
+            }
+        }
+
+        .cardsContainer {
+            .card1, .card2, .card3 {
+                width: 250px;
+                height: 350px;
+                margin: 10px;
+                .cardHeading {
+                    font-size: 1.2rem;
+                    margin: 5px;
+                }
+
+                .cardSubHeading {
+                    font-size: 0.8rem;
+                    margin: 5px;
+                }
+            }
+        }
+    }
 }
