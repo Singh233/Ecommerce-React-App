@@ -94,8 +94,14 @@ export default function Filter(props) {
             <p className={styles.currentFilter}>{currentSort} <span></span> </p>
 
             <div className={styles.options}>
-                <img style={active ? buttonEffect : {}} onClick={handleSortIconClick} src={sortIcon} alt="" />
-                <Link to='/wishlist'><p> <FontAwesomeIcon icon={faHeart} /> </p></Link>
+                <div className={styles.filter}>
+                    <img style={active ? buttonEffect : {}} onClick={handleSortIconClick} src={sortIcon} alt="" />
+                    <span className={styles.tooltiptext}>Sort by</span>
+                </div>
+                <Link to='/wishlist'>
+                    <p> <FontAwesomeIcon icon={faHeart} /> </p>
+                    <span className={styles.tooltiptext}>Wishlist</span>
+                </Link>
 
                 <div className={`animate__animated animate__faster ${styles.sortOptions} ${showOptions ? styles.hide : 'animate__zoomIn'}`}>
                         <p 

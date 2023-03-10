@@ -41,7 +41,8 @@ export default function Wishlist(props) {
 
                 <div className={styles.options}>
                     <img src={sortIcon} alt="" />
-                    
+                    <span className={styles.tooltiptext}>Coming soon!</span>
+
                 </div>
             </div>
             
@@ -59,7 +60,7 @@ export default function Wishlist(props) {
 
             {
                 wishlistItems.length === 0 && (
-                    <div className={styles.empty}>
+                    <div className={` ${styles.empty} animate__animated animate__fadeIn`}>
                         <p className={styles.emptyText}>
                             Your wishlist is empty
                         </p>

@@ -41,6 +41,12 @@
 
         .categoryDropdown {
             z-index: 1;
+            width: auto;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+
+            
+
 
             p {
                 display: flex;
@@ -50,10 +56,16 @@
                 font-weight: 600;
                 margin: 0px;
                 padding: 13px;
-                border-radius: 13px;
-
+                border-radius: 11px;
+                width: max-content;
+                transition: all 0.2s ease-in-out;
                 svg {
                     margin-left: 5px;
+                }
+
+                &:hover {
+                    background-color: white;
+                    color: palevioletred
                 }
             }
         }
@@ -67,6 +79,8 @@
             margin: 10px;
             outline: none;
             background-color: transparent;
+            
+
             
         }
 
@@ -112,7 +126,7 @@
                 margin: 13px;
                 transition: all 0.2s ease-in-out;
                 &:hover {
-                    color: #0f65ee;
+                    color: palevioletred;
                 }
 
             }

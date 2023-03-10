@@ -20,6 +20,7 @@ export const SORT_PRODUCTS_HIGH_TO_LOW = 'SORT_PRODUCTS_HIGH_TO_LOW';
 export const SORT_BY_LATEST = 'SORT_BY_LATEST';
 export const SORT_BY_ELECTRONICS = 'SORT_BY_ELECTRONICS';
 export const SORT_BY_HOME_AND_KITCHEN = 'SORT_BY_HOME_AND_KITCHEN';
+export const SORT_BY_CATEGORY_ALL = 'SORT_BY_CATEGORY_ALL';
 
 // action types for cart
 export const ADD_TO_CART = 'ADD_TO_CART';
@@ -133,3 +134,12 @@ export const sortByHomeAndKitchen = (products) => {
         products,
     };
 }
+
+// action creator for sorting product by All category
+export const sortByAll = (products) => {
+    return {
+        type: SORT_BY_CATEGORY_ALL,
+        products,
+    };
+}
+
