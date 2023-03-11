@@ -66,7 +66,6 @@ export function productsReducer(state = initialProductsState, action) {
             
             // add products to local storage that contains all products
             localStorage.setItem('allProducts', JSON.stringify(products));
-            console.log(JSON.parse(localStorage.getItem('allProducts')), 'allProducts')
             return {
                 ...state,
                 products,
@@ -236,8 +235,18 @@ const initialCartState = {
 export function cartReducer(state = initialCartState, action) {
     switch (action.type) {
         case ADD_TO_CART:
-            // add to local storage
-            localStorage.setItem('cart', JSON.stringify([...state.cart, action.product]));
+            // get cart from local storage
+            const cartFromLocalStorage1 = JSON.parse(localStorage.getItem('cart'));
+
+            // add to state
+            if (cartFromLocalStorage1) {
+                const newCart = [...cartFromLocalStorage1, action.product];
+                localStorage.setItem('cart', JSON.stringify(newCart));
+            } else {
+                localStorage.setItem('cart', JSON.stringify([...state.cart, action.product]));
+            }
+
+
             const totalPrice = localStorage.getItem('totalPrice');
             console.log(totalPrice, 'totalPrice')
 
@@ -259,9 +268,15 @@ export function cartReducer(state = initialCartState, action) {
 
             // remove from state
             const cart = cartFromLocalStorage.filter((product) => product.id !== action.product.id);
+            console.log(cart);
+            if (cart.length !== 0) {
+                // update total price in local storage
+                localStorage.setItem('totalPrice', JSON.stringify(localStorage.getItem('totalPrice') - Math.round(parseFloat(action.product.price))));
+            } else {
+                localStorage.setItem('totalPrice', JSON.stringify(0));
+            }
 
-            // update total price in local storage
-            localStorage.setItem('totalPrice', JSON.stringify(localStorage.getItem('totalPrice') - Math.round(parseFloat(action.product.price))));
+    
             
             // remove from local storage
             localStorage.setItem('cart', JSON.stringify(cart));
