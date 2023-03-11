@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 import styles from '../styles/Navbar.module.scss';
 
@@ -17,10 +18,21 @@ export default function Navbar() {
     // state to toggle smNavContainer
     const [toggle, setToggle] = React.useState(true);
 
+    // state for navigation selected
+    const [selected, setSelected] = React.useState(window.location.pathname);
+
     // function to toggle smNavContainer
     const toggleNav = () => {
         setToggle(!toggle);
     };
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        setSelected(window.location.pathname);
+        console.log(window.location.pathname);
+
+    }, [navigate]);
 
     return (
         <>
@@ -34,19 +46,19 @@ export default function Navbar() {
                 </div>
 
                 <div className={styles.navLinks}>
-                    <Link to="/">Home</Link>
-                    <Link to="/products">Products</Link>
-                    <Link to="/add-product">Add Product</Link>
+                    <Link className={`${selected === '/home' ? styles.selected : ''}`} to="/">Home</Link>
+                    <Link className={`${selected === '/products' ? styles.selected : ''}`} to="/products">Products</Link>
+                    <Link className={`${selected === '/add-product' ? styles.selected : ''}`} to="/add-product">Add Product</Link>
                 </div>
 
                 <div className={styles.navIcons}>
-                    <Link to="/wishlist">
+                    <Link className={`${selected === '/wishlist' ? styles.selected : ''}`} to="/wishlist">
                         <FontAwesomeIcon icon={faHeart} />
                     </Link>
-                    <Link to="/cart">
+                    <Link className={`${selected === '/cart' ? styles.selected : ''}`} to="/cart">
                         <FontAwesomeIcon icon={faBagShopping} />
                     </Link>
-                    <Link to="/user">
+                    <Link className={`${selected === '/user' ? styles.selected : ''}`} to="/user">
                         <FontAwesomeIcon icon={faCircleUser} />
                     </Link>
                 </div>

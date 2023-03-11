@@ -13,12 +13,15 @@
     .branding {
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         .square {
             width: 2.3rem;
             height: 2.3rem;
             background-color: #ffc300;
             border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+
         }
 
         p {
@@ -37,6 +40,11 @@
                 font-size: 1.7rem;
             }
         }
+
+        &:hover .square {
+            background-color: #ffdd59;
+            
+        }
     }
 
     .navLinks {
@@ -47,8 +55,17 @@
         margin-right: 20px; // to center
 
         a {
+            color: gray;
+            transition: all 0.2s ease-in-out;
+            &:hover {
+                color: white;
+            }
+        }
+        .selected {
             color: white;
         }
+
+
     }
 
     .navIcons {
@@ -59,9 +76,19 @@
         font-size: 1.8rem;
 
         a {
+            color: gray;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                color: white;
+            }
+        }
+        .selected {
             color: white;
         }
     }
+
+    
 
     .smMenu {
         display: none;
