@@ -6,6 +6,7 @@ import styles from '../styles/pages/Home.module.scss';
 export default function Home() {
     return (
         <div className={styles.homeContainer}>
+            
             {/* Heading */}
             <div className={styles.heading}>
                 <p>Welcome to our store!</p>
@@ -18,21 +19,21 @@ export default function Home() {
 
             <div className={styles.cardsContainer}>
                 {/* Card 1 */}
-                <Link to="/products">
+                <Link to="/Ecommerce-React-App/products">
                     <div className={styles.card1}>
                         <p>Browse All Products</p>
                     </div>
                 </Link>
 
                 {/* Card 2 */}
-                <Link to="/add-product">
+                <Link to="/Ecommerce-React-App/add-product">
                     <div className={styles.card2}>
                         <p>Add Products</p>
                     </div>
                 </Link>
 
                 {/* Card 3 */}
-                <Link to="/wishlist">
+                <Link to="/Ecommerce-React-App/wishlist">
                     <div className={styles.card3}>
                         <p>Wishlist</p>
                     </div>
