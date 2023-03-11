@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import '../styles/App.css';
 
 // React Router
@@ -10,6 +10,7 @@ import AddProduct from '../pages/AddProduct';
 import Cart from '../pages/Cart';
 import { connect } from 'react-redux';
 import Wishlist from '../pages/Wishlist';
+import LoadingBar from 'react-top-loading-bar'
 
 
 
@@ -20,20 +21,21 @@ function App(props) {
     // destructuring the products reducer
     const { productsReducer } = props;
     const { products, wishlist } = productsReducer;
+    const ref = useRef(null);
 
 
 
     return (
         <div className="App">
-            <Navbar />
+            <Navbar forwardRef={ref}/>
 
             <Routes>
-                <Route path="/Ecommerce-React-App/" element={<Home />} />
-                <Route path="/Ecommerce-React-App/products" element={<Products />} />
-                <Route path="/Ecommerce-React-App/add-product" element={<AddProduct />} />
-                <Route path="/Ecommerce-React-App/cart" element={<Cart />} />
-                <Route path="/Ecommerce-React-App/wishlist" element={<Wishlist dispatch={props.dispatch} products={wishlist} />} />
-                <Route path="*" element={<Navigate to="/Ecommerce-React-App" />} />
+                <Route path="/Ecommerce-React-App/" element={<Home forwardRef={ref} />} />
+                <Route path="/Ecommerce-React-App/products" element={<Products forwardRef={ref} />} />
+                <Route path="/Ecommerce-React-App/add-product" element={<AddProduct forwardRef={ref} />} />
+                <Route path="/Ecommerce-React-App/cart" element={<Cart forwardRef={ref} />} />
+                <Route path="/Ecommerce-React-App/wishlist" element={<Wishlist forwardRef={ref} dispatch={props.dispatch} products={wishlist} />} />
+                <Route path="*" element={<Navigate to="/Ecommerce-React-App/" />} />
             </Routes>
         </div>
     );
