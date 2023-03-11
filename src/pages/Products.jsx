@@ -29,7 +29,6 @@ function Products(props) {
         },
     });
 
-    console.log(products, 'products-----');
 
     useEffect(() => {
         // fetch products from api. Here we are fetching all the products from the api so only those products will be deleted that use have made locally
@@ -39,13 +38,13 @@ function Products(props) {
                 success: 'Products updated successfully',
                 error: 'Please try again later!',
             });
+            
             props.dispatch(addProducts(response)); // dispatch action to add products to store
         };
         fetchProducts();
+        console.log('first render-------')
 
-        return () => {
-            // cleanup
-        };
+
     }, []);
 
     return (
