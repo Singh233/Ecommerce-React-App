@@ -47,7 +47,7 @@ export function productsReducer(state = initialProductsState, action) {
 
             const data = {
                 ...state,
-                products: [action.product, ...state.products],
+                products: [action.product, ...JSON.parse(localStorage.getItem('products'))],
             }
             return {
                 ...data,
