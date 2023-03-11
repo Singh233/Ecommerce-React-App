@@ -46,19 +46,19 @@ export default function Navbar() {
                 </div>
 
                 <div className={styles.navLinks}>
-                    <Link className={`${selected === '/home' ? styles.selected : ''}`} to="/">Home</Link>
-                    <Link className={`${selected === '/products' ? styles.selected : ''}`} to="/products">Products</Link>
-                    <Link className={`${selected === '/add-product' ? styles.selected : ''}`} to="/add-product">Add Product</Link>
+                    <Link className={`${selected === '/Ecommerce-React-App/home' ? styles.selected : ''}`} to="/Ecommerce-React-App">Home</Link>
+                    <Link className={`${selected === '/Ecommerce-React-App/products' ? styles.selected : ''}`} to="/Ecommerce-React-App/products">Products</Link>
+                    <Link className={`${selected === '/Ecommerce-React-App/add-product' ? styles.selected : ''}`} to="/Ecommerce-React-App/add-product">Add Product</Link>
                 </div>
 
                 <div className={styles.navIcons}>
-                    <Link className={`${selected === '/wishlist' ? styles.selected : ''}`} to="/wishlist">
+                    <Link className={`${selected === '/Ecommerce-React-App/wishlist' ? styles.selected : ''}`} to="/Ecommerce-React-App/wishlist">
                         <FontAwesomeIcon icon={faHeart} />
                     </Link>
-                    <Link className={`${selected === '/cart' ? styles.selected : ''}`} to="/cart">
+                    <Link className={`${selected === '/Ecommerce-React-App/cart' ? styles.selected : ''}`} to="/Ecommerce-React-App/cart">
                         <FontAwesomeIcon icon={faBagShopping} />
                     </Link>
-                    <Link className={`${selected === '/user' ? styles.selected : ''}`} to="/user">
+                    <Link className={`${selected === '/Ecommerce-React-App/user' ? styles.selected : ''}`} to="/Ecommerce-React-App/user">
                         <FontAwesomeIcon icon={faCircleUser} />
                     </Link>
                 </div>

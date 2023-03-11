@@ -64,7 +64,7 @@ export default function Wishlist(props) {
                         <p className={styles.emptyText}>
                             Your wishlist is empty
                         </p>
-                        <Link to='/products' className={styles.emptyLink}> 
+                        <Link to='/Ecommerce-React-App/products' className={styles.emptyLink}> 
                             <button>Browse Products</button>
                         </Link>
                         

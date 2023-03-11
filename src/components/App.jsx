@@ -28,12 +28,12 @@ function App(props) {
             <Navbar />
 
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/add-product" element={<AddProduct />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/wishlist" element={<Wishlist dispatch={props.dispatch} products={wishlist} />} />
-                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="/Ecommerce-React-App/" element={<Home />} />
+                <Route path="/Ecommerce-React-App/products" element={<Products />} />
+                <Route path="/Ecommerce-React-App/add-product" element={<AddProduct />} />
+                <Route path="/Ecommerce-React-App/cart" element={<Cart />} />
+                <Route path="/Ecommerce-React-App/wishlist" element={<Wishlist dispatch={props.dispatch} products={wishlist} />} />
+                <Route path="*" element={<Navigate to="/Ecommerce-React-App" />} />
             </Routes>
         </div>
     );

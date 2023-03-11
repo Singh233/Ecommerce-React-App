@@ -98,7 +98,7 @@ export default function Filter(props) {
                     <img style={active ? buttonEffect : {}} onClick={handleSortIconClick} src={sortIcon} alt="" />
                     <span className={styles.tooltiptext}>Sort by</span>
                 </div>
-                <Link to='/wishlist'>
+                <Link to='/Ecommerce-React-App/wishlist'>
                     <p> <FontAwesomeIcon icon={faHeart} /> </p>
                     <span className={styles.tooltiptext}>Wishlist</span>
                 </Link>

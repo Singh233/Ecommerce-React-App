@@ -59,7 +59,7 @@ function Cart(props) {
                     className={` ${styles.empty} animate__animated animate__fadeIn`}
                 >
                     <p className={styles.emptyText}>Your Cart is empty</p>
-                    <Link to="/products" className={styles.emptyLink}>
+                    <Link to="/Ecommerce-React-App/products" className={styles.emptyLink}>
                         <button>Browse Products</button>
                     </Link>
                 </div>
