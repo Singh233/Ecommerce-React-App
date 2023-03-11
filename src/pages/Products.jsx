@@ -44,6 +44,7 @@ function Products(props) {
         fetchProducts();
         console.log('first render-------')
 
+        
 
     }, []);
 
