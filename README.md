@@ -1,6 +1,10 @@
 
 # 🛍️ Ecommerce React App
 
+
+https://user-images.githubusercontent.com/37498067/224540875-38b0fc7c-2f72-4ad8-89bd-fe766adf46a3.mov
+
+
 The eCommerce React app allows users to browse and purchase products online. It includes features like fetching, adding, deleting, and updating products in the database. Users can add products to their cart and wishlist, and proceed to checkout to purchase their items.
 
 Here is the JSON server for products - https://my-json-server.typicode.com/singh233/JSON-Server
