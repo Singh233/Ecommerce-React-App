@@ -42,3 +42,4 @@ export default function Home() {
         </div>
     );
 }
+<a href="https://imgbox.com/6GFthANT" target="_blank"><img src="https://thumbs2.imgbox.com/27/4d/6GFthANT_t.png" alt="image host"/></a>

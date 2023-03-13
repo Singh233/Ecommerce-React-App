@@ -19,6 +19,9 @@ export default function Navbar() {
     // state to toggle smNavContainer
     const [toggle, setToggle] = React.useState(true);
 
+    // state for cart count
+    const [cartCount, setCartCount] = React.useState(0);
+
     // ref for loading bar
     const ref = React.useRef(null);
 
@@ -31,12 +34,23 @@ export default function Navbar() {
     };
     const navigate = useNavigate();
 
+    
+
+
 
     useEffect(() => {
         setSelected(window.location.pathname);
         console.log(window.location.pathname);
 
-    }, [navigate]);
+        // get cart from local storage
+        const cart = JSON.parse(localStorage.getItem('cart'));
+        if (cart) {
+            setCartCount(cart.length);
+        }
+            
+        
+
+    }, [navigate, localStorage.getItem('cart')]);
 
     return (
         <>
@@ -58,15 +72,19 @@ export default function Navbar() {
                 </div>
 
                 <div className={styles.navIcons}>
+                <Link onClick={() => ref.current.complete()} className={`${selected === '/Ecommerce-React-App/user' ? styles.selected : ''}`} to="/Ecommerce-React-App/user">
+                        <FontAwesomeIcon icon={faCircleUser} />
+                    </Link>
                     <Link onClick={() => ref.current.complete()} className={`${selected === '/Ecommerce-React-App/wishlist' ? styles.selected : ''}`} to="/Ecommerce-React-App/wishlist">
                         <FontAwesomeIcon icon={faHeart} />
                     </Link>
                     <Link onClick={() => ref.current.complete()} className={`${selected === '/Ecommerce-React-App/cart' ? styles.selected : ''}`} to="/Ecommerce-React-App/cart">
-                        <FontAwesomeIcon icon={faBagShopping} />
+                        <div className={styles.cartCount}>
+                            <FontAwesomeIcon icon={faBagShopping} />
+                            <p>{cartCount}</p>
+                        </div>
                     </Link>
-                    <Link onClick={() => ref.current.complete()} className={`${selected === '/Ecommerce-React-App/user' ? styles.selected : ''}`} to="/Ecommerce-React-App/user">
-                        <FontAwesomeIcon icon={faCircleUser} />
-                    </Link>
+                    
                 </div>
 
                 <div className={styles.smMenu} onClick={toggleNav}>

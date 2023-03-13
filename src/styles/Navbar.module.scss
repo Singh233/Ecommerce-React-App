@@ -86,6 +86,27 @@
         .selected {
             color: white;
         }
+
+        .cartCount {
+            display: flex;
+            align-items: center;
+
+            p {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                margin-left: 25px;
+                font-size: 0.7rem;
+                margin-top: -10px;
+                color: white;
+                background-color: #0f65ee;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+
+            }
+        }
     }
 
     

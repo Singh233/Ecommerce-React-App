@@ -27,7 +27,7 @@ function App(props) {
 
     return (
         <div className="App">
-            <Navbar forwardRef={ref}/>
+            <Navbar forwardRef={ref} cartReducer={props.cartReducer} />
 
             <Routes>
                 <Route path="/Ecommerce-React-App/" element={<Home forwardRef={ref} />} />
@@ -44,6 +44,7 @@ function App(props) {
 const mapStateToProps = (state) => {
     return {
         productsReducer: state.productsReducer,
+        cartReducer: state.cartReducer,
     };
 };
 

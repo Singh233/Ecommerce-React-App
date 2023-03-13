@@ -40,6 +40,17 @@ export default function ProductCard(props) {
 
     // add to cart handler
     const handleAddToCart = () => {
+        // check if product is already in cart
+        const cart = JSON.parse(localStorage.getItem('cart'));
+        if (cart) {
+            const productInCart = cart.find(item => item.id === product.id);
+            if (productInCart) {
+                toast.error('Sorry, you can buy only one quantity!');
+                return;
+            }
+        }
+
+
         const dispatch = props.dispatch(addToCart(product));
 
         // check if button is clicked from wishlist
