@@ -45,7 +45,6 @@ export default function StepTwo(props) {
             ...productDetails,
             description: e.target.value,
         });
-        console.log(productDetails)
     };
 
     return (

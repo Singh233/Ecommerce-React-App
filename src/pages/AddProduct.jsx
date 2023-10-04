@@ -96,7 +96,6 @@ function AddProduct(props) {
             
             // dispatch action to add product to store
             props.dispatch(addNewProduct(newProduct));
-            console.log(products)
 
             // outro animation
 

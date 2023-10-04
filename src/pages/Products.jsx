@@ -42,7 +42,6 @@ function Products(props) {
             props.dispatch(addProducts(response)); // dispatch action to add products to store
         };
         fetchProducts();
-        console.log('first render-------')
 
         
 

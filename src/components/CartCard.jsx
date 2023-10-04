@@ -30,7 +30,6 @@ function CartCard(props) {
 
     // handle remove from cart
     const handleRemoveFromCart = () => {
-        console.log('remove from cart');
 
         // dispatch action to remove from cart
         props.dispatch(removeFromCart(product));
@@ -40,7 +39,6 @@ function CartCard(props) {
 
     // handle move to wishlist
     const handleMoveToWishlist = () => {
-        console.log('move to wishlist');
 
         // dispatch action to add to wishlist
         props.dispatch(addToWishlist(product));

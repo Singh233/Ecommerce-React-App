@@ -140,7 +140,6 @@ export default function ProductCard(props) {
 
     // delete button click handler
     const handleDeleteClick = () => {
-        console.log(product.id + ' id ----')
         props.dispatch(deleteProduct(product.id));
         toast.success('Product deleted');
         setAnimate(true);
@@ -152,7 +151,6 @@ export default function ProductCard(props) {
 
     // like button click handler
     const handleLikeClick = () => {
-        console.log('like clicked');
         setAnimate(true);
         setTimeout(() => {
             setAnimate(false);

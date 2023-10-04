@@ -29,7 +29,6 @@ export default function EditProduct(props) {
     const [hide, setHide] = useState(true);
 
     useEffect(() => {
-        console.log(editProduct);
         if (editProduct.name !== '') {
             setHide(false);
         }
@@ -68,7 +67,6 @@ export default function EditProduct(props) {
             ...productDetails,
             description: e.target.value,
         });
-        console.log(productDetails);
     };
 
     // handle category input change
@@ -77,7 +75,6 @@ export default function EditProduct(props) {
             ...productDetails,
             category: e.target.value,
         });
-        console.log(productDetails);
     };
 
     // handle rating input change
@@ -86,7 +83,6 @@ export default function EditProduct(props) {
             ...productDetails,
             rating: e.target.value,
         });
-        console.log(productDetails);
     };
 
     // handle close button click

@@ -43,7 +43,6 @@ export default function StepThree(props) {
             ...productDetails,
             category: e.target.value,
         });
-        console.log(productDetails);
     };
 
     // handle rating input change
@@ -52,7 +51,6 @@ export default function StepThree(props) {
             ...productDetails,
             rating: e.target.value,
         });
-        console.log(productDetails);
     };
 
     return (
